@@ -51,7 +51,11 @@ export default function SignUpPage() {
       toast.error(error?.message);
     }
   };
-
+  const handleGoogleSignIn = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+  };
   const container = {
     hidden: {},
     show: {
@@ -229,7 +233,10 @@ export default function SignUpPage() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >
-            <Button className="w-full rounded-full border hover:bg-indigo-600 transition">
+            <Button
+              onClick={handleGoogleSignIn}
+              className="w-full rounded-full border hover:bg-indigo-600 transition"
+            >
               <FcGoogle size={20} />
               Continue with Google
             </Button>
