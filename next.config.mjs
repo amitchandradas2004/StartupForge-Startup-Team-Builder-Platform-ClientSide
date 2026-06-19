@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-   images: {
+  images: {
     remotePatterns: [
       {
         protocol: "https",
@@ -11,8 +11,10 @@ const nextConfig = {
         hostname: "**",
       },
     ],
-  }
+  },
+
   /* config options here */
+  serverExternalPackages: ["@better-auth/kysely-adapter"],
 };
 
 export default nextConfig;
