@@ -76,7 +76,7 @@ const SuccessStories = () => {
   return (
     <section className="w-full py-20 bg-white dark:bg-slate-950">
       {/* Header */}
-      <div className="container mx-auto px-6 text-center pb-12">
+      <div className="container mx-auto px-6 text-center pb-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
