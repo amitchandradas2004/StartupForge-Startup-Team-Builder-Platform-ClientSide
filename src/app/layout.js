@@ -1,5 +1,8 @@
-import { Inter, Poppins, Space_Grotesk } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar/Navbar";
+import { Providers } from "./Providers";
+import { Toaster } from "react-hot-toast";
 
 export const inter = Inter({
   subsets: ["latin"],
@@ -22,7 +25,15 @@ export default function RootLayout({ children }) {
       data-theme="light"
       className={`${spaceGrotesk.className} ${inter.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <main>
+          <Providers>
+            <Navbar />
+            <div> {children}</div>
+            <Toaster position="top-center" />
+          </Providers>
+        </main>
+      </body>
     </html>
   );
 }

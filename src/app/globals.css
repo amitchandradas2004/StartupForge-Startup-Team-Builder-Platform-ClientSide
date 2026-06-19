@@ -1,3 +1,12 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 
+/* Purpose	Color	Hex
+Primary    	Orange   		#F97316 / orange-500
+Secondary    	Navy   		#0F172A / slate-900
+Accent    	Blue   		#3B82F6 / blue-500
+Background    	Light Gray   		#F8FAFC
+Dark Background    	Dark Slate   		#020617  / slate-950
+Success    	Green   		#22C55E    /  green-500
+Warning    	Amber   		#F59E0B  /  amber-500
+Error    	Red   		#EF4444   /  red-500  */
