@@ -1,5 +1,3 @@
-// "use client";
-
 import { Button, Dropdown, Separator } from "@heroui/react";
 import Link from "next/link";
 import { FaHome, FaUserCircle } from "react-icons/fa";
@@ -8,15 +6,15 @@ import { FaReplyAll, FaStore } from "react-icons/fa6";
 import { ImProfile } from "react-icons/im";
 import Image from "next/image";
 import { ThemeToggle } from "./ThemeToggle";
-const UserDropDown = () => {
-  const user = true;
-  // const { data: session } = authClient.useSession();
-  // const user = session?.user;
-  // const handleLogout = async () => {
-  //   await authClient.signOut();
-  //   toast.success(`${user.name}, you have successfully logged Out.`);
-  //   redirect("/");
-  // };
+import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
+import { redirect } from "next/navigation";
+const UserDropDown = ({ user }) => {
+  const handleLogout = async () => {
+    await authClient.signOut();
+    toast.success(`${user?.name}, you have successfully logged Out.`);
+    redirect("/");
+  };
 
   return (
     <Dropdown>
@@ -74,7 +72,7 @@ const UserDropDown = () => {
           <Separator />
           <Dropdown.Item className="text-red-400 p-0 ">
             <Button
-              // onClick={handleLogout}
+              onClick={handleLogout}
               variant="danger"
               className={"w-full"}
             >

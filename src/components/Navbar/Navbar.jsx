@@ -13,16 +13,18 @@ import { ThemeToggle } from "./ThemeToggle";
 import UserDropDown from "./UserDropDown";
 import Image from "next/image";
 import { MdCollections } from "react-icons/md";
+import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
+import { redirect } from "next/navigation";
 
 const Navbar = () => {
-  const user = true;
-  // const { data: session } = authClient.useSession();
-  // const user = session?.user;
-  // const handleLogout = async () => {
-  //   await authClient.signOut();
-  //   toast.success(`${user.name}, you have successfully logged Out.`);
-  //   redirect("/");
-  // };
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+  const handleLogout = async () => {
+    await authClient.signOut();
+    toast.success(`${user?.name}, you have successfully logged Out.`);
+    redirect("/");
+  };
   return (
     <header className="fixed top-0 left-0 z-50 w-full backdrop-blur-xl shadow-xl border-b border-white/10 bg-white dark:bg-slate-950">
       <nav className="mx-auto flex h-13 container items-center justify-between  px-6 ">
@@ -71,7 +73,7 @@ const Navbar = () => {
           {!user ? (
             <div className="flex items-center gap-2">
               <ThemeToggle />
-              <Link href={"/signUp"}>
+              <Link href={"/login"}>
                 <Button className="rounded-full border border-white/20 px-5 py-2 text-sm font-medium transition flex items-center gap-2 bg-indigo-600">
                   <VscDebugStart />
                   Login
@@ -130,7 +132,7 @@ const Navbar = () => {
 
                 <Dropdown.Item id="signIn" className="p-0 ">
                   <Link
-                    href="/signIn"
+                    href="/login"
                     className="w-full flex items-center gap-2 p-2 rounded-2xl hover:bg-gray-200 hover:text-indigo-600"
                   >
                     <VscDebugStart />
@@ -192,7 +194,7 @@ const Navbar = () => {
                 <Separator />
                 <Dropdown.Item className="text-red-400 p-0">
                   <Button
-                    // onClick={handleLogout}
+                    onClick={handleLogout}
                     variant="danger"
                     className={"w-full"}
                   >
