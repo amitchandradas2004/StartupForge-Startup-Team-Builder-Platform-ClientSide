@@ -1,12 +1,42 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 
-/* Purpose	Color	Hex
-Primary    	Orange   		#F97316 / orange-500
-Secondary    	Navy   		#0F172A / slate-900
-Accent    	Blue   		#3B82F6 / blue-500
-Background    	Light Gray   		#F8FAFC
-Dark Background    	Dark Slate   		#020617  / slate-950
-Success    	Green   		#22C55E    /  green-500
-Warning    	Amber   		#F59E0B  /  amber-500
-Error    	Red   		#EF4444   /  red-500  */
+ 
+/* Width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Thumb */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(99, 102, 241, 0.6),
+    rgba(168, 85, 247, 0.6)
+  );
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(99, 102, 241, 0.9),
+    rgba(168, 85, 247, 0.9)
+  );
+}
+
+/* Firefox support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 102, 241, 0.6) transparent;
+}

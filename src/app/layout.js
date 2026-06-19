@@ -13,11 +13,11 @@ export const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
 });
+
 export const metadata = {
   title: "StartupForge || Home Page",
   description: "StartupForge-Startup-Team-Builder-Platform",
 };
-
 
 export default function RootLayout({ children }) {
   return (
@@ -26,14 +26,14 @@ export default function RootLayout({ children }) {
       data-theme="light"
       className={`${spaceGrotesk.className} ${inter.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <main>
-          <Providers>
-            <Navbar />
-            <div> {children}</div>
-            <Toaster position="top-center" />
-          </Providers>
-        </main>
+      <body className="h-full">
+        <Providers>
+          <Navbar />
+
+          {children}
+
+          <Toaster position="top-right" />
+        </Providers>
       </body>
     </html>
   );

@@ -40,6 +40,7 @@ export default function SignUpPage() {
     const { data, error } = await authClient.signUp.email({
       ...user,
       image: uploadedImage.url,
+      plan,
     });
 
     if (data) {
@@ -51,11 +52,7 @@ export default function SignUpPage() {
       toast.error(error?.message);
     }
   };
-  const handleGoogleSignIn = async () => {
-    const data = await authClient.signIn.social({
-      provider: "google",
-    });
-  };
+
   const container = {
     hidden: {},
     show: {
@@ -200,48 +197,7 @@ export default function SignUpPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <div className="flex items-center gap-2 text-xs text-gray-500 my-3">
-            <motion.div
-              className="flex-1 h-px bg-gray-300"
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            />
-
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="whitespace-nowrap"
-            >
-              OR CONTINUE WITH
-            </motion.span>
-
-            <motion.div
-              className="flex-1 h-px bg-gray-300"
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            />
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 15, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-          >
-            <Button
-              onClick={handleGoogleSignIn}
-              className="w-full rounded-full border hover:bg-indigo-600 transition"
-            >
-              <FcGoogle size={20} />
-              Continue with Google
-            </Button>
-          </motion.div>
-        </motion.div>
+        ></motion.div>
         {/* FOOTER */}
         <motion.p variants={fadeUp} className="text-center text-sm mt-4">
           Already have an account?{" "}
