@@ -115,7 +115,7 @@ const Banner = () => {
           transition={{ duration: 1.1 }}
           className="flex flex-col sm:flex-row justify-center gap-4 mt-8"
         >
-          <Link href="/signIn">
+          <Link href="/login">
             {" "}
             <button
               className={`w-40 h-12 rounded-2xl bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition shadow-lg ${inter.className}`}

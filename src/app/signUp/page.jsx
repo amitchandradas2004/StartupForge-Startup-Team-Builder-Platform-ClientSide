@@ -1,9 +1,9 @@
 "use client";
+
 import { authClient } from "@/lib/auth-client";
 import { imageUpload } from "@/lib/imageUpload";
 import {
   Button,
-  FieldError,
   Fieldset,
   Form,
   Label,
@@ -12,176 +12,237 @@ import {
   InputGroup,
   TextField,
 } from "@heroui/react";
+
 import { Eye } from "lucide-react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { BsEyeSlash } from "react-icons/bs";
 import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
+
 import { MdImage } from "react-icons/md";
+
+import { motion } from "framer-motion";
+import { redirect } from "next/navigation";
+import { FcGoogle } from "react-icons/fc";
+
 export default function SignUpPage() {
   const [isVisible, setIsVisible] = useState(false);
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
     const user = Object.fromEntries(formData.entries());
 
-    // Upload image
     const uploadedImage = await imageUpload(user.image);
 
-    // Signup
     const { data, error } = await authClient.signUp.email({
       ...user,
       image: uploadedImage.url,
     });
-    console.log(data, "data", error, "error");
+
     if (data) {
-      toast.success(
-        `${user.name}, you have successfully created an account in StartUp Forge.`,
-      );
+      toast.success(`${user.name} account created successfully`);
       redirect("/");
     }
-    if (data.error) {
-      toast.error(`${error?.message}`);
+
+    if (error) {
+      toast.error(error?.message);
     }
   };
 
+  const container = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.12,
+      },
+    },
+  };
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <div className="border border-slate-300  shadow-xl w-110 mx-auto my-20  p-5 rounded-2xl  bg-black/5 ">
-      {" "}
-      <Form
-        onSubmit={onSubmit}
-        className="flex flex-col gap-4   justify-center"
+    <motion.div
+      initial="hidden"
+      animate="show"
+      variants={container}
+      className="min-h-screen flex items-center justify-center px-4
+      bg-linear-to-br from-slate-100 via-indigo-100 to-purple-200
+      dark:from-slate-950 dark:via-slate-900 dark:to-black py-20"
+    >
+      {/* CARD */}
+      <motion.div
+        variants={fadeUp}
+        className="w-full max-w-md p-6 rounded-2xl shadow-2xl
+        bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl
+        border border-white/30 dark:border-slate-700"
       >
-        <Fieldset className="w-full">
-          <Fieldset.Legend className="text-center font-bold text-2xl">
-            Create your account
-          </Fieldset.Legend>
-          <Fieldset.Group>
-            {/* name */}
-            <TextField isRequired name="name">
-              <Label>Name</Label>
-              <InputGroup className="rounded-full overflow-hidden">
-                <InputGroup.Prefix className="pl-3 text-gray-400">
-                  <FaUser size={12} />
-                </InputGroup.Prefix>
-                <InputGroup.Input placeholder="John Doe" className="bg-white" />
-              </InputGroup>
-              <FieldError />
-            </TextField>
+        {/* TITLE */}
+        <motion.h1 variants={fadeUp} className="text-2xl font-bold text-center">
+          Create your account
+        </motion.h1>
 
-            {/* Email */}
-            <TextField isRequired name="email" type="email">
-              <Label>Email</Label>
-              <InputGroup className="rounded-full overflow-hidden">
-                <InputGroup.Prefix className="pl-3 text-gray-400">
-                  <FaEnvelope size={12} />
-                </InputGroup.Prefix>
-                <InputGroup.Input
-                  type="email"
-                  placeholder="john@example.com"
-                  className="bg-white"
-                />
-              </InputGroup>
-              <FieldError />
-            </TextField>
+        <motion.p variants={fadeUp} className="text-sm text-center mb-6">
+          Join StartUp Forge today
+        </motion.p>
 
-            {/* Password */}
-            <TextField name="password" type="password" isRequired>
-              <Label>Password</Label>
-              <InputGroup className="rounded-full overflow-hidden">
-                <InputGroup.Prefix className="pl-3 text-gray-400">
-                  <FaLock size={12} />
-                </InputGroup.Prefix>
+        <Form onSubmit={onSubmit}>
+          <Fieldset.Group className="space-y-4">
+            {/* NAME */}
+            <motion.div variants={fadeUp}>
+              <TextField isRequired name="name" type="text">
+                <Label>Name</Label>
+                <InputGroup className="rounded-full overflow-hidden">
+                  <InputGroup.Prefix>
+                    <FaUser />
+                  </InputGroup.Prefix>
+                  <InputGroup.Input placeholder="John Doe" />
+                </InputGroup>
+              </TextField>
+            </motion.div>
 
-                <InputGroup.Input
-                  name="password"
-                  type={isVisible ? "text" : "password"}
-                  placeholder="Enter password"
-                />
+            {/* EMAIL */}
+            <motion.div variants={fadeUp}>
+              <TextField isRequired name="email" type="email">
+                <Label>Email</Label>
+                <InputGroup className="rounded-full overflow-hidden">
+                  <InputGroup.Prefix>
+                    <FaEnvelope />
+                  </InputGroup.Prefix>
+                  <InputGroup.Input placeholder="john@example.com" />
+                </InputGroup>
+              </TextField>
+            </motion.div>
 
-                <InputGroup.Suffix
-                  className="pr-3 cursor-pointer text-gray-400"
-                  onClick={() => setIsVisible(!isVisible)}
-                >
-                  {isVisible ? <BsEyeSlash size={16} /> : <Eye size={16} />}
-                </InputGroup.Suffix>
-              </InputGroup>
-            </TextField>
+            {/* PASSWORD */}
+            <motion.div variants={fadeUp}>
+              <TextField isRequired name="password" type="password">
+                <Label>Password</Label>
+                <InputGroup className="rounded-full overflow-hidden">
+                  <InputGroup.Prefix>
+                    <FaLock />
+                  </InputGroup.Prefix>
 
-            {/* Image */}
-            <TextField
-              isRequired
-              className="w-full"
-              type="file"
-              variant="secondary"
-            >
-              <Label>Image</Label>
+                  <InputGroup.Input
+                    type={isVisible ? "text" : "password"}
+                    placeholder="Enter password"
+                  />
 
-              <InputGroup className="rounded-full overflow-hidden">
-                <InputGroup.Prefix className="pl-3 text-gray-400">
-                  <MdImage />
-                </InputGroup.Prefix>
+                  <InputGroup.Suffix onClick={() => setIsVisible(!isVisible)}>
+                    {isVisible ? <BsEyeSlash /> : <Eye />}
+                  </InputGroup.Suffix>
+                </InputGroup>
+              </TextField>
+            </motion.div>
 
-                <input
-                  name="image"
-                  type="file"
-                  className="w-full bg-white border border-none py-2 px-3 text-muted cursor-pointer"
-                />
-              </InputGroup>
-            </TextField>
+            {/* IMAGE */}
+            <motion.div variants={fadeUp}>
+              <TextField isRequired type="file">
+                <Label>Image</Label>
+                <InputGroup>
+                  <InputGroup.Prefix>
+                    <MdImage />
+                  </InputGroup.Prefix>
 
-            {/* Role */}
-            <Select isRequired name="role" placeholder="Select one">
-              <Label>Signup As</Label>
+                  <input name="image" type="file" className="w-full py-2" />
+                </InputGroup>
+              </TextField>
+            </motion.div>
 
-              <Select.Trigger className="rounded-full">
-                <span className="text-gray-400 mr-2">👤</span>
-                <Select.Value />
-                <Select.Indicator />
-              </Select.Trigger>
+            {/* ROLE */}
+            <motion.div variants={fadeUp}>
+              <Select isRequired name="role" placeholder="Select one">
+                <Label>Signup As</Label>
 
-              <Select.Popover className="rounded-3xl">
-                <ListBox>
-                  <ListBox.Item id="founder" textValue="founder">
-                    Founder
-                    <ListBox.ItemIndicator />
-                  </ListBox.Item>
+                <Select.Trigger className="rounded-full">
+                  <span className="mr-2">👤</span>
+                  <Select.Value />
+                </Select.Trigger>
 
-                  <ListBox.Item id="collaborator" textValue="collaborator">
-                    Collaborator
-                    <ListBox.ItemIndicator />
-                  </ListBox.Item>
-                </ListBox>
-              </Select.Popover>
-            </Select>
+                <Select.Popover className="rounded-3xl">
+                  <ListBox>
+                    <ListBox.Item id="founder">Founder</ListBox.Item>
+                    <ListBox.Item id="collaborator">Collaborator</ListBox.Item>
+                  </ListBox>
+                </Select.Popover>
+              </Select>
+            </motion.div>
           </Fieldset.Group>
 
-          <Button type="submit" className={"w-full bg-indigo-600"}>
-            Signup
-          </Button>
-        </Fieldset>
-        <span className="font-medium mx-auto mt-2">
+          {/* BUTTON */}
+          <motion.div
+            variants={fadeUp}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <Button type="submit" className="w-full mt-5 bg-indigo-600">
+              Signup
+            </Button>
+          </motion.div>
+        </Form>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <div className="flex items-center gap-2 text-xs text-gray-500 my-3">
+            <motion.div
+              className="flex-1 h-px bg-gray-300"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            />
+
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="whitespace-nowrap"
+            >
+              OR CONTINUE WITH
+            </motion.span>
+
+            <motion.div
+              className="flex-1 h-px bg-gray-300"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            />
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 15, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            <Button className="w-full rounded-full border hover:bg-indigo-600 transition">
+              <FcGoogle size={20} />
+              Continue with Google
+            </Button>
+          </motion.div>
+        </motion.div>
+        {/* FOOTER */}
+        <motion.p variants={fadeUp} className="text-center text-sm mt-4">
           Already have an account?{" "}
-          <Link href="/signin">
-            <span className="text-red-600 ">Login</span>
+          <Link href="/login" className="text-red-500">
+            Login
           </Link>
-        </span>
-      </Form>
-      <div className="flex items-center gap-2 text-xs text-gray-500 my-3">
-        <div className="flex-1 h-px bg-gray-300" />
-        OR CONTINUE WITH
-        <div className="flex-1 h-px bg-gray-300" />
-      </div>
-      <div>
-        <Button className="w-full rounded-full border hover:bg-indigo-600">
-          <FcGoogle size={20} />
-          Continue with Google
-        </Button>
-      </div>
-    </div>
+        </motion.p>
+      </motion.div>
+    </motion.div>
   );
 }
