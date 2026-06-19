@@ -6,6 +6,7 @@ import WhyJoinStartupForge from "@/components/Banner/WhyJoinStartupForge";
 import Testimonials from "@/components/Banner/Testimonials";
 import StartupStatistics from "@/components/Banner/StartupStatistics";
 import CommunityHighlights from "@/components/Banner/CommunityHighlights";
+import Pricing from "@/components/Banner/Pricing";
 
 export default function Home() {
   return (
@@ -14,9 +15,10 @@ export default function Home() {
       <Banner />
       <SuccessStories />
       <WhyJoinStartupForge />
-      <StartupStatistics/>
-      <Testimonials/>
-      <CommunityHighlights/>
+      <Pricing />
+      <StartupStatistics />
+      <Testimonials />
+      <CommunityHighlights />
       <Footer />
     </div>
   );
