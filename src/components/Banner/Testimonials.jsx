@@ -3,7 +3,16 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { Inter, Space_Grotesk } from "next/font/google";
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+});
 const testimonials = [
   {
     name: "Arafat Rahman",
@@ -70,9 +79,14 @@ const Testimonials = () => {
           Testimonials
         </motion.h2>
 
-        <p className="mt-3 text-slate-600 dark:text-slate-300">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className={`mt-3 text-slate-600 dark:text-slate-300 ${inter.className}`}
+        >
           What users say about StartupForge
-        </p>
+        </motion.p>
       </div>
 
       {/* Slider */}
@@ -116,7 +130,9 @@ const Testimonials = () => {
             </div>
 
             {/* Text */}
-            <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm md:text-base">
+            <p
+              className={`text-slate-700 dark:text-slate-300 leading-relaxed text-sm md:text-base ${inter.className}`}
+            >
               “{item.text}”
             </p>
           </motion.div>
@@ -126,14 +142,14 @@ const Testimonials = () => {
         <div className="flex justify-center gap-4 mt-6">
           <button
             onClick={prev}
-            className="px-4 py-2 rounded-lg bg-slate-200 dark:bg-white/10 text-slate-900 dark:text-white hover:scale-105 transition"
+            className="w-20 h-10 rounded-3xl bg-slate-200 dark:bg-white/10 text-slate-900 dark:text-white hover:scale-105 transition"
           >
             Prev
           </button>
 
           <button
             onClick={next}
-            className="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 hover:scale-105 transition"
+            className="w-20 h-10 rounded-3xl bg-indigo-600 text-white hover:bg-indigo-700 hover:scale-105 transition"
           >
             Next
           </button>
