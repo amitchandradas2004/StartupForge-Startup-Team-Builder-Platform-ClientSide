@@ -6,7 +6,7 @@ import { LuLogOut } from "react-icons/lu";
 import { TiThMenu } from "react-icons/ti";
 import { ImProfile } from "react-icons/im";
 import { FaHome } from "react-icons/fa";
-import { FaReplyAll, FaStore, FaWindowRestore } from "react-icons/fa6";
+import { FaReplyAll } from "react-icons/fa6";
 import { VscDebugStart } from "react-icons/vsc";
 import Icon from "@/Assets/icon.png";
 import { ThemeToggle } from "./ThemeToggle";

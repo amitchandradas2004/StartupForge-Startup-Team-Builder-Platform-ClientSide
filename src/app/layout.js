@@ -18,6 +18,7 @@ export const metadata = {
   description: "StartupForge-Startup-Team-Builder-Platform",
 };
 
+
 export default function RootLayout({ children }) {
   return (
     <html
