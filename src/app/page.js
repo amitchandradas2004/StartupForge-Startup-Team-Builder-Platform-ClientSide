@@ -1,11 +1,13 @@
 import Footer from "@/components/Footer/Footer";
 import { inter } from "./layout";
+import Banner from "@/components/Banner/Banner";
 
 export default function Home() {
   return (
-    <div className="text-center">
+    <div>
       <div className={inter.className}>This is homepage</div>
-      <Footer/>
+      <Banner />
+      <Footer />
     </div>
   );
 }

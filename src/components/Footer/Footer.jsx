@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import Image from "next/image";
 import logo from "@/Assets/icon.png";
+import { Inter, Space_Grotesk } from "next/font/google";
 const footerVariants = {
   hidden: {
     opacity: 0,
@@ -36,7 +37,15 @@ const itemVariants = {
     y: 0,
   },
 };
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+});
 export default function Footer() {
   return (
     <motion.footer
@@ -55,7 +64,7 @@ export default function Footer() {
           >
             <Link
               href="/"
-              className="flex items-center justify-center md:justify-start gap-3"
+              className={`flex items-center justify-center md:justify-start gap-3 ${spaceGrotesk.className}`}
             >
               <Image
                 src={logo}
@@ -70,13 +79,17 @@ export default function Footer() {
                   StartupForge
                 </h2>
 
-                <p className="text-sm text-slate-500 dark:text-slate-400">
+                <p
+                  className={`text-sm text-slate-500 dark:text-slate-400 ${inter.className}`}
+                >
                   Build teams. Launch ideas.
                 </p>
               </div>
             </Link>
 
-            <p className="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p
+              className={`mt-4 text-slate-600 dark:text-slate-400 leading-relaxed ${inter.className}`}
+            >
               Connecting founders with talented collaborators to transform
               innovative startup ideas into reality.
             </p>
@@ -101,7 +114,7 @@ export default function Footer() {
                 <li key={link}>
                   <Link
                     href="/"
-                    className="text-slate-600 dark:text-slate-400 hover:text-orange-500 dark:hover:text-orange-500 transition-colors duration-300"
+                    className={`text-slate-600 dark:text-slate-400 hover:text-orange-500 dark:hover:text-orange-500 transition-colors duration-300 ${inter.className}`}
                   >
                     {link}
                   </Link>
@@ -122,14 +135,18 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex justify-center md:justify-start gap-3 items-start">
                 <FaEnvelope className="text-orange-500 mt-1" />
-                <span className="text-slate-600 dark:text-slate-400">
+                <span
+                  className={`text-slate-600 dark:text-slate-400 ${inter.className}`}
+                >
                   support@startupforge.com
                 </span>
               </div>
 
               <div className="flex justify-center md:justify-start gap-3 items-start">
                 <FaMapMarkerAlt className="text-orange-500 mt-1" />
-                <span className="text-slate-600 dark:text-slate-400">
+                <span
+                  className={`text-slate-600 dark:text-slate-400 ${inter.className}`}
+                >
                   Chattogram, Bangladesh
                 </span>
               </div>
@@ -177,7 +194,9 @@ export default function Footer() {
               ))}
             </div>
 
-            <p className="mt-4 text-slate-600 dark:text-slate-400">
+            <p
+              className={`mt-4 text-slate-600 dark:text-slate-400 ${inter.className}`}
+            >
               Join our growing startup community and stay updated.
             </p>
           </motion.div>
@@ -189,20 +208,21 @@ export default function Footer() {
           className="mt-12 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4"
         >
           <p className="text-sm text-slate-500 dark:text-slate-400 text-center md:text-left">
-            © {new Date().getFullYear()} StartupForge. All rights reserved.
+            © {new Date().getFullYear()} StartupForge.{" "}
+            <span className={`${inter.className}`}>All rights reserved.</span>
           </p>
 
           <div className="flex items-center gap-6 text-sm">
             <Link
               href="/privacy"
-              className="text-slate-500 dark:text-slate-400 hover:text-orange-500 dark:hover:text-orange-500"
+              className={`text-slate-500 dark:text-slate-400 hover:text-orange-500 dark:hover:text-orange-500 ${inter.className}`}
             >
               Privacy Policy
             </Link>
 
             <Link
               href="/terms"
-              className="text-slate-500 dark:text-slate-400 hover:text-orange-500 dark:hover:text-orange-500"
+              className={`text-slate-500 dark:text-slate-400 hover:text-orange-500 dark:hover:text-orange-500 ${inter.className}`}
             >
               Terms of Service
             </Link>
