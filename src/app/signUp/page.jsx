@@ -45,7 +45,7 @@ export default function SignUpPage() {
 
     if (data) {
       toast.success(`${user.name} account created successfully`);
-      // redirect("/");
+      redirect("/");
     }
 
     if (error) {
@@ -56,7 +56,7 @@ export default function SignUpPage() {
     const data = await authClient.signIn.social({
       provider: "google",
     });
-    console.log(data, "data");
+   
   };
 
 

@@ -28,9 +28,6 @@ export const auth = betterAuth({
         default: "founder",
         input: true,
       },
-      plan: {
-        default: "free",
-      },
     },
   },
 });

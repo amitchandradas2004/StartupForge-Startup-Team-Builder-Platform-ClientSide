@@ -1,5 +1,4 @@
-import Pricing from "@/components/Banner/Pricing";
-
+import Pricing from "@/components/HomePage/Pricing";
 
 const PricingPage = () => {
   return (

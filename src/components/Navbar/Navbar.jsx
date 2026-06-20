@@ -15,11 +15,15 @@ import Image from "next/image";
 import { MdCollections } from "react-icons/md";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
-import { redirect } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 
 const Navbar = () => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
+  const pathName = usePathname();
+  if (pathName.includes("/dashboard")) {
+    return null;
+  }
 
   const handleLogout = async () => {
     await authClient.signOut();
