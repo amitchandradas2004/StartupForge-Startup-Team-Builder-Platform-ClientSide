@@ -25,6 +25,7 @@ import { MdImage } from "react-icons/md";
 import { motion } from "framer-motion";
 import { redirect } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
+import ImageUpload from "./imageUpload";
 
 export default function SignUpPage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -40,18 +41,24 @@ export default function SignUpPage() {
     const { data, error } = await authClient.signUp.email({
       ...user,
       image: uploadedImage.url,
-      plan,
     });
 
     if (data) {
       toast.success(`${user.name} account created successfully`);
-      redirect("/");
+      // redirect("/");
     }
 
     if (error) {
       toast.error(error?.message);
     }
   };
+  const handleGoogleSignIn = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+    console.log(data, "data");
+  };
+
 
   const container = {
     hidden: {},
@@ -150,16 +157,38 @@ export default function SignUpPage() {
 
             {/* IMAGE */}
             <motion.div variants={fadeUp}>
-              <TextField isRequired type="file">
+              {/* <TextField isRequired type="file">
                 <Label>Image</Label>
                 <InputGroup>
                   <InputGroup.Prefix>
                     <MdImage />
                   </InputGroup.Prefix>
 
-                  <input name="image" type="file" className="w-full py-2" />
+                  <input
+                    name="image"
+                    type="file"
+                    className="w-full py-2"
+                    placeholder="Click Here to upload your image"
+                  />
                 </InputGroup>
-              </TextField>
+              </TextField> */}
+              <div className="w-full">
+                <Label isRequired>Image</Label>
+                <label
+                  htmlFor="image-upload"
+                  className="w-full flex items-center justify-between px-3 py-2 border border-gray-300 dark:border-none rounded-full cursor-pointer text-gray-600  transition bg-white dark:bg-[#18181B]"
+                >
+                  <span>Click here to upload your image</span>
+                  <span className="text-xs opacity-60">Browse</span>
+                </label>
+
+                <input
+                  id="image-upload"
+                  name="image"
+                  type="file"
+                  className="hidden"
+                />
+              </div>
             </motion.div>
 
             {/* ROLE */}
@@ -198,6 +227,40 @@ export default function SignUpPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         ></motion.div>
+        {/* OR DIVIDER (MATCH SIGNUP STYLE) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <div className="flex items-center gap-2 text-xs text-gray-500 my-4">
+            <motion.div
+              className="flex-1 h-px bg-gray-300"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            />
+
+            <span className="whitespace-nowrap">OR CONTINUE WITH</span>
+
+            <motion.div
+              className="flex-1 h-px bg-gray-300"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            />
+          </div>
+
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <Button
+              onClick={handleGoogleSignIn}
+              className="w-full rounded-full border hover:bg-indigo-600 transition"
+            >
+              <FcGoogle size={20} />
+              Continue with Google
+            </Button>
+          </motion.div>
+        </motion.div>
         {/* FOOTER */}
         <motion.p variants={fadeUp} className="text-center text-sm mt-4">
           Already have an account?{" "}

@@ -6,6 +6,7 @@ import Testimonials from "@/components/Banner/Testimonials";
 import StartupStatistics from "@/components/Banner/StartupStatistics";
 import CommunityHighlights from "@/components/Banner/CommunityHighlights";
 import Pricing from "@/components/Banner/Pricing";
+import FAQ from "@/components/Banner/FAQ";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <StartupStatistics />
       <Testimonials />
       <CommunityHighlights />
+      <FAQ />
       <Footer />
     </>
   );

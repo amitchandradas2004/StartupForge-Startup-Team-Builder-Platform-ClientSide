@@ -33,18 +33,17 @@ const Banner = () => {
   }, [index]);
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden py-15">
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden py-20">
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-center bg-cover"
+        className="absolute inset-0 bg-center bg-cover "
         style={{
           backgroundImage:
-            "url('https://plus.unsplash.com/premium_photo-1683133976227-955341ed26b8')",
+            "url('https://images.unsplash.com/photo-1604856420566-576ba98b53cd')",
         }}
       />
-
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/50 dark:bg-black/60" />
+      <div className="absolute inset-0 bg-black/50 dark:bg-black/70" />
 
       {/* Content Wrapper */}
       <div className="relative z-10 max-w-4xl w-full px-6 text-center">
