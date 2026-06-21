@@ -4,13 +4,11 @@ import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import { useState } from "react";
 import { UpdateUserProfileModal } from "./UpdateUserModal";
+import Link from "next/link";
 
 export default function ProfilePage() {
   const { data: session } = authClient.useSession();
   const user = session?.user;
-  // console.log(user, "user");
-
-  // mock user data (replace later with API/auth session)
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -52,17 +50,28 @@ export default function ProfilePage() {
         </div>
 
         {/* Info */}
-        <div className="mt-6 space-y-3 text-sm text-slate-600 dark:text-slate-300">
+        <div className="mt-6 space-y-5 text-sm text-slate-600 dark:text-slate-300">
           <p>
-            <span className="font-medium">User Role:</span>{" "}
-            <span className="border rounded-2xl  text-black p-1">
+            <span className="font-medium">Role:</span>{" "}
+            <span className="border rounded-2xl  text-black p-1 bg-slate-200 dark:bg-slate-800 dark:text-white ">
               {user?.role}
             </span>
           </p>
-          <p>
-            <span className="font-medium">Email Verified:</span>{" "}
-            {user?.emailVerified ? "Yes" : "No"}
-          </p>
+          <div className="flex flex-col md:flex-row items-start gap-3 justify-start ">
+            <p>
+              <span className="font-medium">Current Plan:</span>{" "}
+              <span className="border rounded-2xl  text-black p-1 bg-slate-200 dark:bg-slate-800 dark:text-white">
+                {user?.plan}
+              </span>
+            </p>
+            <span>
+              Want to upgrade your plan?{" "}
+              <Link href={"/pricing"} className="text-blue-500 underline">
+                Click here
+              </Link>
+            </span>
+          </div>
+
           <p>
             <span className="font-medium">Created:</span>{" "}
             {new Date(user?.createdAt).toLocaleString()}

@@ -19,14 +19,12 @@ import { usePathname } from "next/navigation";
 
 export default function DashboardSideBar() {
   const pathname = usePathname();
-  console.log(pathname, "pathname");
-  const isActive = (href) =>
+   const isActive = (href) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
   const { data: session } = authClient.useSession();
   const user = session?.user;
   const role = user?.role || "founder";
-  // console.log(role, "user");
-  const dashboardItems = {
+   const dashboardItems = {
     founder: [
       {
         icon: GrOverview,
@@ -136,7 +134,7 @@ export default function DashboardSideBar() {
                     <h2>Welcome, {user?.name}</h2>
                     <div>
                       Role:{" "}
-                      <span className="border p-1 rounded-full bg-green-100">
+                      <span className="border p-1 rounded-full bg-green-100 dark:bg-slate-800">
                         {user?.role}
                       </span>
                     </div>

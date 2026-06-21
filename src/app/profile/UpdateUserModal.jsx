@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
-import { imageUpload } from "@/lib/imageUpload";
+import { imageUpload } from "@/lib/actions/imageUpload";
 import { Button, Input, Modal, Surface } from "@heroui/react";
 import toast from "react-hot-toast";
 

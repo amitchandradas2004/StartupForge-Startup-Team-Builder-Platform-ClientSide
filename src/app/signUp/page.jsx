@@ -1,7 +1,7 @@
 "use client";
 
 import { authClient } from "@/lib/auth-client";
-import { imageUpload } from "@/lib/imageUpload";
+import { imageUpload } from "@/lib/actions/imageUpload";
 import {
   Button,
   Fieldset,
@@ -25,17 +25,18 @@ import { FcGoogle } from "react-icons/fc";
 
 export default function SignUpPage() {
   const [isVisible, setIsVisible] = useState(false);
-
+  const [role, setRole] = useState("collaborator");
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const user = Object.fromEntries(formData.entries());
-
     const uploadedImage = await imageUpload(user.image);
-
+    const plan = role === "collaborator" ? "collaborator_free" : "founder_free";
     const { data, error } = await authClient.signUp.email({
       ...user,
       image: uploadedImage.url,
+      role,
+      plan,
     });
 
     if (data) {
@@ -150,21 +151,6 @@ export default function SignUpPage() {
 
             {/* IMAGE */}
             <motion.div variants={fadeUp}>
-              {/* <TextField isRequired type="file">
-                <Label>Image</Label>
-                <InputGroup>
-                  <InputGroup.Prefix>
-                    <MdImage />
-                  </InputGroup.Prefix>
-
-                  <input
-                    name="image"
-                    type="file"
-                    className="w-full py-2"
-                    placeholder="Click Here to upload your image"
-                  />
-                </InputGroup>
-              </TextField> */}
               <div className="w-full">
                 <Label isRequired>Image</Label>
                 <label
@@ -186,7 +172,12 @@ export default function SignUpPage() {
 
             {/* ROLE */}
             <motion.div variants={fadeUp}>
-              <Select isRequired name="role" placeholder="Select one">
+              <Select
+                isRequired
+                name="role"
+                placeholder="Select one"
+                onChange={(value) => setRole(value)}
+              >
                 <Label>Signup As</Label>
 
                 <Select.Trigger className="rounded-full">

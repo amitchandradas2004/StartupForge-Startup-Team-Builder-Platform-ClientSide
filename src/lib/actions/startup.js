@@ -1,9 +1,7 @@
 "use server";
-
- 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 export const createStartup = async (newStartupData) => {
-  const res = await fetch(`${baseUrl}/startups`, {
+  const res = await fetch(`${baseUrl}/api/startups`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
