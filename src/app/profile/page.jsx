@@ -54,8 +54,8 @@ export default function ProfilePage() {
         {/* Info */}
         <div className="mt-6 space-y-3 text-sm text-slate-600 dark:text-slate-300">
           <p>
-            <span className="font-medium">Role:</span>{" "}
-            <span className="border rounded-2xl bg-green-200  text-black p-1">
+            <span className="font-medium">User Role:</span>{" "}
+            <span className="border rounded-2xl  text-black p-1">
               {user?.role}
             </span>
           </p>

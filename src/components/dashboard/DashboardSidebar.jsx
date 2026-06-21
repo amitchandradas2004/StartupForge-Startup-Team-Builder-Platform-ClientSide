@@ -90,7 +90,9 @@ export default function DashboardSideBar() {
     ],
   };
   const navItems = dashboardItems[role];
-
+  const close = () => {
+    window.location.reload();
+  };
   return (
     <>
       <div className="lg:hidden">
@@ -103,7 +105,11 @@ export default function DashboardSideBar() {
           <Drawer.Backdrop />
           <Drawer.Content placement="left">
             <Drawer.Dialog className="w-60 bg-white dark:bg-slate-950">
-              <Drawer.CloseTrigger className="bg-blue-200 text-black mt-3" />
+              <Drawer.CloseTrigger
+                type="close"
+                className="bg-blue-200 text-black mt-3"
+                onClick={close}
+              />
 
               <Drawer.Header>
                 <Drawer.Heading>
@@ -123,6 +129,15 @@ export default function DashboardSideBar() {
                     </div>
                     <span className="text-xs font-bold">StartUp Forge</span>
                   </Link>
+                  <div className="text-xs space-y-2 mt-2">
+                    <h2>Welcome, {user?.name}</h2>
+                    <div>
+                      Role:{" "}
+                      <span className="border p-1 rounded-full bg-green-100">
+                        {user?.role}
+                      </span>
+                    </div>
+                  </div>
                 </Drawer.Heading>
                 <hr />
               </Drawer.Header>

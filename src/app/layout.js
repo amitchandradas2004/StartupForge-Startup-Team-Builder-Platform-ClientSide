@@ -30,9 +30,7 @@ export default function RootLayout({ children }) {
       <body className="h-full">
         <Providers>
           <Navbar />
-
           {children}
-
           <Toaster position="top-center" />
           <Footer />
         </Providers>

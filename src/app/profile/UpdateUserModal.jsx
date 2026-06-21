@@ -1,79 +1,3 @@
-// "use client";
-// import { authClient } from "@/lib/auth-client";
-// import { imageUpload } from "@/lib/imageUpload";
-// import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
-// import { Edit, User } from "lucide-react";
-
-// export function UpdateUserProfileModal({ user }) {
-//   const onSubmit = async (e) => {
-//     e.preventDefault();
-//     const name = e.target.name.value;
-
-//     const uploadedImage = await imageUpload(user?.image);
-//     await authClient.updateUser({
-//       name,
-//       image: uploadedImage.url,
-//     });
-//   };
-//   return (
-//     <Modal>
-//       <Button variant="secondary">
-//         <Edit></Edit> Update Profile
-//       </Button>
-//       <Modal.Backdrop>
-//         <Modal.Container placement="auto">
-//           <Modal.Dialog className="sm:max-w-md">
-//             <Modal.CloseTrigger />
-//             <Modal.Header>
-//               <Modal.Icon className="bg-accent-soft text-accent-soft-foreground">
-//                 <User className="size-5" />
-//               </Modal.Icon>
-//               <Modal.Heading>Update User</Modal.Heading>
-//             </Modal.Header>
-//             <Modal.Body className="p-6">
-//               <Surface variant="default">
-//                 <form onSubmit={onSubmit} className="flex flex-col gap-4">
-//                   <TextField className="w-full " name="name" type="text">
-//                     <Label>Name</Label>
-//                     <Input
-//                       placeholder="Enter your name"
-//                       className={"rounded-full"}
-//                     />
-//                   </TextField>
-//                   <div className="w-full">
-//                     <Label isRequired>Image</Label>
-//                     <label
-//                       htmlFor="image-upload"
-//                       className="w-full flex items-center justify-between px-3 py-2 border border-gray-300 dark:border-none rounded-full cursor-pointer text-gray-600  transition bg-white dark:bg-[#18181B]"
-//                     >
-//                       <span>Click here to upload your image</span>
-//                       <span className="text-xs opacity-60">Browse</span>
-//                     </label>
-
-//                     <input
-//                       id="image-upload"
-//                       name="image"
-//                       type="file"
-//                       className="hidden"
-//                     />
-//                   </div>
-//                   <Modal.Footer>
-//                     <Button type="submit" slot="close" variant="secondary">
-//                       Cancel
-//                     </Button>
-//                     <Button type="submit" slot="close">
-//                       Update
-//                     </Button>
-//                   </Modal.Footer>
-//                 </form>
-//               </Surface>
-//             </Modal.Body>
-//           </Modal.Dialog>
-//         </Modal.Container>
-//       </Modal.Backdrop>
-//     </Modal>
-//   );
-// }
 "use client";
 
 import { useState } from "react";
@@ -167,3 +91,81 @@ export function UpdateUserProfileModal({ user }) {
     </>
   );
 }
+// *************************
+
+// "use client";
+// import { authClient } from "@/lib/auth-client";
+// import { imageUpload } from "@/lib/imageUpload";
+// import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
+// import { Edit, User } from "lucide-react";
+
+// export function UpdateUserProfileModal({ user }) {
+//   const onSubmit = async (e) => {
+//     e.preventDefault();
+//     const name = e.target.name.value;
+
+//     const uploadedImage = await imageUpload(user?.image);
+//     await authClient.updateUser({
+//       name,
+//       image: uploadedImage.url,
+//     });
+//   };
+//   return (
+//     <Modal>
+//       <Button variant="secondary">
+//         <Edit></Edit> Update Profile
+//       </Button>
+//       <Modal.Backdrop>
+//         <Modal.Container placement="auto">
+//           <Modal.Dialog className="sm:max-w-md">
+//             <Modal.CloseTrigger />
+//             <Modal.Header>
+//               <Modal.Icon className="bg-accent-soft text-accent-soft-foreground">
+//                 <User className="size-5" />
+//               </Modal.Icon>
+//               <Modal.Heading>Update User</Modal.Heading>
+//             </Modal.Header>
+//             <Modal.Body className="p-6">
+//               <Surface variant="default">
+//                 <form onSubmit={onSubmit} className="flex flex-col gap-4">
+//                   <TextField className="w-full " name="name" type="text">
+//                     <Label>Name</Label>
+//                     <Input
+//                       placeholder="Enter your name"
+//                       className={"rounded-full"}
+//                     />
+//                   </TextField>
+//                   <div className="w-full">
+//                     <Label isRequired>Image</Label>
+//                     <label
+//                       htmlFor="image-upload"
+//                       className="w-full flex items-center justify-between px-3 py-2 border border-gray-300 dark:border-none rounded-full cursor-pointer text-gray-600  transition bg-white dark:bg-[#18181B]"
+//                     >
+//                       <span>Click here to upload your image</span>
+//                       <span className="text-xs opacity-60">Browse</span>
+//                     </label>
+
+//                     <input
+//                       id="image-upload"
+//                       name="image"
+//                       type="file"
+//                       className="hidden"
+//                     />
+//                   </div>
+//                   <Modal.Footer>
+//                     <Button type="submit" slot="close" variant="secondary">
+//                       Cancel
+//                     </Button>
+//                     <Button type="submit" slot="close">
+//                       Update
+//                     </Button>
+//                   </Modal.Footer>
+//                 </form>
+//               </Surface>
+//             </Modal.Body>
+//           </Modal.Dialog>
+//         </Modal.Container>
+//       </Modal.Backdrop>
+//     </Modal>
+//   );
+// }
