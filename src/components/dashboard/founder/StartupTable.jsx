@@ -1,5 +1,6 @@
 import { Button, Table } from "@heroui/react";
 import { UpdateStartupModal } from "./UpdateStartupModal";
+import { DeleteStartup } from "./DeleteStartup";
 
 export function StartupTable({ startups }) {
   return (
@@ -27,7 +28,7 @@ export function StartupTable({ startups }) {
                   <UpdateStartupModal startup={startup} />
                 </Table.Cell>
                 <Table.Cell>
-                  <Button variant="danger">Delete</Button>
+                  <DeleteStartup startup={startup} />
                 </Table.Cell>
               </Table.Row>
             ))}

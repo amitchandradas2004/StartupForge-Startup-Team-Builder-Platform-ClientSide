@@ -47,6 +47,8 @@ export function UpdateStartupModal({ startup }) {
     toast.success("Startup updated successfully");
     window.location.reload();
    };
+
+   
   return (
     <div className="flex flex-wrap gap-4">
       <Modal>
