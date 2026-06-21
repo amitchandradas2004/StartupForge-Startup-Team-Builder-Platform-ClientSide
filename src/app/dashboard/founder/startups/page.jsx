@@ -1,10 +1,16 @@
 import { StartupTable } from "@/components/dashboard/founder/StartupTable";
 import { getFounderStartup } from "@/lib/api/startup";
+import { auth } from "@/lib/auth";
 import { Button } from "@heroui/react";
+import { headers } from "next/headers";
 import Link from "next/link";
 
 const StartupsPage = async () => {
-  const founderEmail = "founder@gmail.com";
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  const user = session?.user;
+  const founderEmail = user?.email;
   const startups = await getFounderStartup(founderEmail);
  
   return (
@@ -16,7 +22,28 @@ const StartupsPage = async () => {
           <Button> Add new Startup</Button>
         </Link>{" "}
       </div>
-      <StartupTable startups={startups} />
+      {startups.length > 0 ? (
+        <StartupTable startups={startups} />
+      ) : (
+        <div className="flex flex-col items-center justify-center mx-auto rounded-3xl border border-dashed border-slate-300 dark:border-white/10 bg-white/50 dark:bg-slate-950/50 p-12 text-center mr-5 md:mr-0">
+          <div className="mb-4 text-6xl">🚀</div>
+
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+            No Startup Created Yet
+          </h2>
+          <p className="mt-2 max-w-md text-slate-500 dark:text-slate-400">
+            You have not created any startup yet. Create your first startup to
+            showcase your idea, attract collaborators, and start building your
+            team.
+          </p>
+
+          <Link href={"/dashboard/founder/startups/new"}>
+            <button className="mt-6 rounded-full bg-indigo-600 px-6 py-3 text-white font-medium transition-all hover:bg-indigo-700 hover:scale-105">
+              Create Startup
+            </button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

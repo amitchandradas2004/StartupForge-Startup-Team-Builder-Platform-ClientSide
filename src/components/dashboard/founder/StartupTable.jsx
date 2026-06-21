@@ -1,4 +1,5 @@
 import { Button, Table } from "@heroui/react";
+import { UpdateStartupModal } from "./UpdateStartupModal";
 
 export function StartupTable({ startups }) {
   return (
@@ -23,7 +24,7 @@ export function StartupTable({ startups }) {
                 <Table.Cell>{startup.funding_stage}</Table.Cell>
                 <Table.Cell>{startup.description}</Table.Cell>
                 <Table.Cell>
-                  <Button variant="secondary">Update</Button>
+                  <UpdateStartupModal startup={startup} />
                 </Table.Cell>
                 <Table.Cell>
                   <Button variant="danger">Delete</Button>

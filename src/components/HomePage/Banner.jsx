@@ -119,7 +119,7 @@ const Banner = () => {
           {user ? (
             ""
           ) : (
-            <Link href="/login">
+            <Link href="/signUp">
               {" "}
               <button
                 className={`w-40 h-12 rounded-2xl bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition shadow-lg ${inter.className}`}
