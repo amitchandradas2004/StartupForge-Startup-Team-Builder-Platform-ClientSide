@@ -20,11 +20,13 @@ import { redirect, usePathname } from "next/navigation";
 const Navbar = () => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
+  const role = user?.role || "founder";
+
   const pathName = usePathname();
+
   if (pathName.includes("/dashboard")) {
     return null;
   }
-
   const handleLogout = async () => {
     await authClient.signOut();
     toast.success(`${user?.name}, you have successfully logged Out.`);
@@ -52,7 +54,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Menu - Added Glassmorphic "Blur Button" effects */}
-        <div className="hidden md:flex items-center gap-2 text-xs">
+        {/* <div className="hidden md:flex items-center gap-2 text-xs">
           <Link
             href="/"
             className="px-4 py-1 rounded-full font-medium transition-all duration-200 backdrop-blur-md bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 hover:text-indigo-600"
@@ -71,6 +73,43 @@ const Navbar = () => {
           >
             Opportunities
           </Link>
+        </div> */}
+        <div className="hidden md:flex items-center gap-2 text-xs">
+          <Link
+            href="/"
+            className={`px-4 py-1 rounded-full font-medium transition-all duration-200 backdrop-blur-md
+      ${
+        pathName === "/"
+          ? "bg-indigo-600 text-white shadow-lg"
+          : "bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 hover:text-indigo-600"
+      }`}
+          >
+            Home
+          </Link>
+
+          <Link
+            href="/browseStartups"
+            className={`px-4 py-1 rounded-full font-medium transition-all duration-200 backdrop-blur-md
+      ${
+        pathName.startsWith("/browseStartups")
+          ? "bg-indigo-600 text-white shadow-lg"
+          : "bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 hover:text-indigo-600"
+      }`}
+          >
+            Startups
+          </Link>
+
+          <Link
+            href="/browseOpportunities"
+            className={`px-4 py-1 rounded-full font-medium transition-all duration-200 backdrop-blur-md
+      ${
+        pathName.startsWith("/browseOpportunities")
+          ? "bg-indigo-600 text-white shadow-lg"
+          : "bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 hover:text-indigo-600"
+      }`}
+          >
+            Opportunities
+          </Link>
         </div>
 
         {/* Desktop Buttons */}
@@ -86,7 +125,7 @@ const Navbar = () => {
               </Link>
             </div>
           ) : (
-            <UserDropDown user={user} />
+            <UserDropDown user={user} role={role} />
           )}
         </div>
 
@@ -159,7 +198,7 @@ const Navbar = () => {
                 </Dropdown.Item>
                 <Dropdown.Item id="dashboard" className="p-0">
                   <Link
-                    href="/dashboard"
+                    href={`/dashboard/${role}`}
                     className="w-full flex items-center gap-2 p-2 rounded-xl transition hover:backdrop-blur-md hover:bg-black/5 dark:hover:bg-white/10 hover:text-indigo-600"
                   >
                     <FaReplyAll />

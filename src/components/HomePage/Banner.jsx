@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Inter, Space_Grotesk } from "next/font/google";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,7 +20,8 @@ const fullTitle = "StartupForge – Forging Startup Success Together";
 const Banner = () => {
   const [text, setText] = useState("");
   const [index, setIndex] = useState(0);
-
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
   // Typing effect
   useEffect(() => {
     if (index < fullTitle.length) {
@@ -114,14 +116,18 @@ const Banner = () => {
           transition={{ duration: 1.1 }}
           className="flex flex-col sm:flex-row justify-center gap-4 mt-8"
         >
-          <Link href="/login">
-            {" "}
-            <button
-              className={`w-40 h-12 rounded-2xl bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition shadow-lg ${inter.className}`}
-            >
-              Get Started
-            </button>
-          </Link>
+          {user ? (
+            ""
+          ) : (
+            <Link href="/login">
+              {" "}
+              <button
+                className={`w-40 h-12 rounded-2xl bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition shadow-lg ${inter.className}`}
+              >
+                Get Started
+              </button>
+            </Link>
+          )}
 
           <Link href="/browseStartups">
             {" "}

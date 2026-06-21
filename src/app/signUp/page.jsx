@@ -19,9 +19,6 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { BsEyeSlash } from "react-icons/bs";
 import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
-
-import { MdImage } from "react-icons/md";
-
 import { motion } from "framer-motion";
 import { redirect } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";

@@ -3,11 +3,12 @@
 import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import { useState } from "react";
+import { UpdateUserProfileModal } from "./UpdateUserModal";
 
 export default function ProfilePage() {
   const { data: session } = authClient.useSession();
   const user = session?.user;
-  console.log(user, "user");
+  // console.log(user, "user");
 
   // mock user data (replace later with API/auth session)
 
@@ -53,7 +54,10 @@ export default function ProfilePage() {
         {/* Info */}
         <div className="mt-6 space-y-3 text-sm text-slate-600 dark:text-slate-300">
           <p>
-            <span className="font-medium">Role:</span> {user?.role}
+            <span className="font-medium">Role:</span>{" "}
+            <span className="border rounded-2xl bg-green-200  text-black p-1">
+              {user?.role}
+            </span>
           </p>
           <p>
             <span className="font-medium">Email Verified:</span>{" "}
@@ -67,9 +71,7 @@ export default function ProfilePage() {
 
         {/* Actions */}
         <div className="mt-6">
-          <button className="px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition">
-            Edit Profile
-          </button>
+          <UpdateUserProfileModal user={user} />
         </div>
       </div>
     </div>

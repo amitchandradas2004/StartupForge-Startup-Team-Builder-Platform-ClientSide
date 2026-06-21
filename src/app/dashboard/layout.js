@@ -25,7 +25,6 @@ export default function RootLayout({ children }) {
             <DashboardSideBar />
             {children}
           </main>
-
           <Toaster position="top-right" />
         </Providers>
       </body>

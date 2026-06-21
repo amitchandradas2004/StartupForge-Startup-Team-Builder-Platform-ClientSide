@@ -9,7 +9,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
-const UserDropDown = ({ user }) => {
+const UserDropDown = ({ user, role }) => {
   const handleLogout = async () => {
     await authClient.signOut();
     toast.success(`${user?.name}, you have successfully logged Out.`);
@@ -35,7 +35,7 @@ const UserDropDown = ({ user }) => {
 
       <Dropdown.Popover className="min-w-60 p-3">
         <Dropdown.Menu>
-          <Dropdown.Item id="home" className="  p-0 ">
+          <Dropdown.Item id="home" className="p-0">
             <Link
               href="/"
               className="w-full  flex items-center gap-2 p-2 rounded-2xl hover:bg-gray-200 hover:text-indigo-600"
@@ -45,9 +45,9 @@ const UserDropDown = ({ user }) => {
             </Link>
           </Dropdown.Item>
 
-          <Dropdown.Item id="dashboard" className="  p-0 ">
+          <Dropdown.Item id="dashboard" className="p-0">
             <Link
-              href="/dashboard"
+              href={`/dashboard/${role}`}
               className="w-full  flex items-center gap-2 p-2 rounded-2xl hover:bg-gray-200 hover:text-indigo-600"
             >
               <FaReplyAll />
@@ -55,7 +55,7 @@ const UserDropDown = ({ user }) => {
             </Link>
           </Dropdown.Item>
 
-          <Dropdown.Item id="profile" className="  p-0 ">
+          <Dropdown.Item id="profile" className="p-0 ">
             <Link
               href="/profile"
               className="w-full  flex items-center gap-2 p-2 rounded-2xl hover:bg-gray-200 hover:text-indigo-600"
