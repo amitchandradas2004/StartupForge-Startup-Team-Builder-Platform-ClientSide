@@ -1,7 +1,16 @@
-import React from "react";
+import OverviewCards from "@/components/dashboard/founder/OverviewCards";
+import { authClient } from "@/lib/auth-client";
 
-const FounderPage = () => {
-  return <div className="mt-20">founder page</div>;
-};
+export default function OverviewPage() {
 
-export default FounderPage;
+  return (
+    <div className="p-6">
+      <OverviewCards
+        
+        totalOpportunities={12}
+        totalApplications={48}
+        acceptedMembers={9}
+      />
+    </div>
+  );
+}

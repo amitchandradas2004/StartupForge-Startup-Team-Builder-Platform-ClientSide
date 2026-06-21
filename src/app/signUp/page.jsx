@@ -22,14 +22,12 @@ import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { redirect } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
-import ImageUpload from "./imageUpload";
 
 export default function SignUpPage() {
   const [isVisible, setIsVisible] = useState(false);
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
     const formData = new FormData(e.currentTarget);
     const user = Object.fromEntries(formData.entries());
 
@@ -50,12 +48,10 @@ export default function SignUpPage() {
     }
   };
   const handleGoogleSignIn = async () => {
-    const data = await authClient.signIn.social({
+    const data = await authClient.signUp.social({
       provider: "google",
     });
-   
   };
-
 
   const container = {
     hidden: {},

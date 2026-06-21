@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
     >
       <body className="h-full">
         <Providers>
-          <main className="flex gap-10 mt-5">
+          <main className="flex">
             <DashboardSideBar />
             {children}
           </main>
