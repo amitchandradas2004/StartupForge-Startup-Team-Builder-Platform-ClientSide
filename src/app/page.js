@@ -6,11 +6,13 @@ import StartupStatistics from "@/components/HomePage/StartupStatistics";
 import CommunityHighlights from "@/components/HomePage/CommunityHighlights";
 import Pricing from "@/components/HomePage/Pricing";
 import FAQ from "@/components/HomePage/FAQ";
+import FeaturedOpportunities from "@/components/HomePage/FeaturedOpportunities";
 
 export default function Home() {
   return (
     <>
       <Banner />
+      <FeaturedOpportunities />
       <SuccessStories />
       <WhyJoinStartupForge />
       <Pricing />

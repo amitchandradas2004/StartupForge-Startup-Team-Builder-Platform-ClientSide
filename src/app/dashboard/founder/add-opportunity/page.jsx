@@ -1,7 +1,6 @@
 "use client";
 import { Date } from "@/components/dashboard/founder/Date";
 import { createOpportynity } from "@/lib/actions/startup";
-import { authClient } from "@/lib/auth-client";
 import { motion } from "framer-motion";
 import {
   Button,
@@ -21,9 +20,7 @@ import Link from "next/link";
 
 const FounderAddOppturnityPage = () => {
   const [skillsInput, setSkillsInput] = useState("");
-  const { data: session } = authClient.useSession();
-  const user = session?.user;
-  const userEmail = user?.email;
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -210,7 +207,6 @@ const FounderAddOppturnityPage = () => {
                 <motion.div variants={itemVariants}>
                   <Date />
                 </motion.div>
-                
               </Fieldset.Group>
 
               {/* Submit Button */}
