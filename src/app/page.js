@@ -7,11 +7,13 @@ import CommunityHighlights from "@/components/HomePage/CommunityHighlights";
 import Pricing from "@/components/HomePage/Pricing";
 import FAQ from "@/components/HomePage/FAQ";
 import FeaturedOpportunities from "@/components/HomePage/FeaturedOpportunities";
+import FeaturedStartup from "@/components/HomePage/FeaturedStartup";
 
 export default function Home() {
   return (
     <>
       <Banner />
+      <FeaturedStartup/>
       <FeaturedOpportunities />
       <SuccessStories />
       <WhyJoinStartupForge />

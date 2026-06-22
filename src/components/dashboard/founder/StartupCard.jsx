@@ -73,10 +73,10 @@ const StartupCard = ({ startup }) => {
           </div>
 
           {/* DIVIDER */}
-          <div className="my-4 h-px bg-linear-to-r from-transparent via-slate-300 dark:via-slate-700 to-transparent" />
+          {/* <div className="my-4 h-px bg-linear-to-r from-transparent via-slate-300 dark:via-slate-700 to-transparent" /> */}
 
           {/* CTA */}
-          <Link
+          {/* <Link
             href={`/startups/${startup._id}`}
             className="
               flex items-center justify-between
@@ -93,7 +93,7 @@ const StartupCard = ({ startup }) => {
             </span>
 
             <FaArrowRight className="text-indigo-500 transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
+          </Link> */}
         </div>
       </div>
     </motion.article>
