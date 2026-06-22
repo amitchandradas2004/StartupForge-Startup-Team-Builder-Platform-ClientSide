@@ -14,8 +14,8 @@ const StartupsPage = async () => {
   const startups = await getFounderStartup(founderEmail);
 
   return (
-    <div className="pb-20 pt-10 dark:bg-slate-950">
-      <div className="flex items-center justify-between p-5 gap-3">
+    <div className="pb-20 pt-10 dark:bg-slate-950 mx-auto  w-full px-5 md:px-10">
+      <div className="flex flex-col md:flex-row items-center justify-between p-5 gap-3">
         {" "}
         <h2>Manage all startups from here</h2>
         <Link href={"/dashboard/founder/startups/new"}>
@@ -25,7 +25,7 @@ const StartupsPage = async () => {
       {startups.length > 0 ? (
         <StartupTable startups={startups} />
       ) : (
-        <div className="flex flex-col items-center justify-center mx-auto rounded-3xl border border-dashed border-slate-300 dark:border-white/10 bg-white/50 dark:bg-slate-950/50 p-12 text-center mr-5 md:mr-0">
+        <div className="flex flex-col items-center w-full justify-center mx-auto rounded-3xl border border-dashed border-slate-300 dark:border-white/10 bg-white/50 dark:bg-slate-950/50 p-12 text-center mr-5 md:mr-0">
           <div className="mb-4 text-6xl">🚀</div>
 
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white">

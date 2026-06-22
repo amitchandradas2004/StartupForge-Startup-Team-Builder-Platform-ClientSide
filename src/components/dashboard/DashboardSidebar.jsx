@@ -45,7 +45,7 @@ export default function DashboardSideBar() {
       {
         icon: MdManageAccounts,
         label: "Manage Opportunities",
-        href: "/dashboard/founder/opportunities",
+        href: "/dashboard/founder/manage-opportunity",
       },
       {
         icon: MdOutlineSettingsApplications,
