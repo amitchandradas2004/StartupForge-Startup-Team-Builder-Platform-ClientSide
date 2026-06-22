@@ -230,7 +230,7 @@ const Navbar = () => {
                 </Dropdown.Item>
                 <Dropdown.Item id="browseOpportunities" className="p-0">
                   <Link
-                    href="/browseOpportinuties"
+                    href="/browseOpportunities"
                     className="w-full flex items-center gap-2 p-2 rounded-xl transition hover:backdrop-blur-md hover:bg-black/5 dark:hover:bg-white/10 hover:text-indigo-600"
                   >
                     <MdCollections />

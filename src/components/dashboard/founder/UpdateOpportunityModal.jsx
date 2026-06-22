@@ -58,7 +58,6 @@ export function UpdateOpportunityModal({ opportunity }) {
     ];
     const opportunityData = { ...data, skills };
 
-    // console.log(opportunityData, "opportunityData");
 
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/opportunities/${_id}`,

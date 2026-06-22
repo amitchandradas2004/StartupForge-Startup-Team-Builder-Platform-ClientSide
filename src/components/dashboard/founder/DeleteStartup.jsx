@@ -22,7 +22,6 @@ export function DeleteStartup({ startup }) {
       }
     } catch (error) {
       toast.error("Something went wrong");
-      console.error(error);
     }
   };
   return (

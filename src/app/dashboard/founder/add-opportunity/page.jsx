@@ -42,7 +42,6 @@ const FounderAddOppturnityPage = () => {
     if (res.insertedId) {
       toast.success(`Opportynity created successfully`);
     }
-    // console.log(opportunityData, "opportunity data");
   };
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -211,6 +210,7 @@ const FounderAddOppturnityPage = () => {
                 <motion.div variants={itemVariants}>
                   <Date />
                 </motion.div>
+                
               </Fieldset.Group>
 
               {/* Submit Button */}
