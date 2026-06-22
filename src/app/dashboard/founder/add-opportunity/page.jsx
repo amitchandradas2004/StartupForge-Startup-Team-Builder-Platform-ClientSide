@@ -35,13 +35,13 @@ const FounderAddOppturnityPage = () => {
           .filter(Boolean),
       ),
     ];
-    const opportunityData = { ...data, skills, founderEmail: userEmail };
+    const opportunityData = { ...data, skills };
 
     const res = await createOpportynity(opportunityData);
     if (res.insertedId) {
       toast.success(`Opportynity created successfully`);
     }
-    console.log(opportunityData, "opportunity data");
+    // console.log(opportunityData, "opportunity data");
   };
   const containerVariants = {
     hidden: { opacity: 0 },

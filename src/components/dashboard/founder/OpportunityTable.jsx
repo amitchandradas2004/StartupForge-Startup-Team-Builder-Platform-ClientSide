@@ -2,6 +2,8 @@
 
 import { Table } from "@heroui/react";
 import { motion } from "framer-motion";
+import { UpdateOpportunityModal } from "./UpdateOpportunityModal";
+import { useState } from "react";
 
 const rowVariants = {
   hidden: { opacity: 0, y: 10 },
@@ -13,6 +15,8 @@ const rowVariants = {
 };
 
 export function OpportunityTable({ opportunities }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOpportunity, setSelectedOpportunity] = useState(null);
   return (
     <Table>
       <Table.ScrollContainer>
@@ -81,7 +85,9 @@ export function OpportunityTable({ opportunities }) {
                   </motion.div>
                 </Table.Cell>
 
-                <Table.Cell>update</Table.Cell>
+                <Table.Cell>
+                  <UpdateOpportunityModal opportunity={opportunity} />
+                </Table.Cell>
                 <Table.Cell>delete</Table.Cell>
               </Table.Row>
             ))}

@@ -10,8 +10,7 @@ import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
 const UserDropDown = ({ user, role }) => {
-  console.log(role, "role in the navbar");
-
+ 
   const handleLogout = async () => {
     await authClient.signOut();
     toast.success(`${user?.name}, you have successfully logged Out.`);
