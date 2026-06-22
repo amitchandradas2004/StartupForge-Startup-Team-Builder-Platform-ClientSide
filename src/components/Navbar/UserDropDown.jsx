@@ -2,7 +2,7 @@ import { Button, Dropdown, Separator } from "@heroui/react";
 import Link from "next/link";
 import { FaHome, FaUserCircle } from "react-icons/fa";
 import { LuLogOut } from "react-icons/lu";
-import { FaReplyAll, FaStore } from "react-icons/fa6";
+import { FaReplyAll } from "react-icons/fa6";
 import { ImProfile } from "react-icons/im";
 import Image from "next/image";
 import { ThemeToggle } from "./ThemeToggle";
@@ -10,6 +10,8 @@ import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
 const UserDropDown = ({ user, role }) => {
+  console.log(role, "role in the navbar");
+
   const handleLogout = async () => {
     await authClient.signOut();
     toast.success(`${user?.name}, you have successfully logged Out.`);
@@ -55,15 +57,19 @@ const UserDropDown = ({ user, role }) => {
             </Link>
           </Dropdown.Item>
 
-          <Dropdown.Item id="profile" className="p-0 ">
-            <Link
-              href="/profile"
-              className="w-full  flex items-center gap-2 p-2 rounded-2xl hover:bg-gray-200 hover:text-indigo-600"
-            >
-              <ImProfile />
-              Profile
-            </Link>
-          </Dropdown.Item>
+          {role === "collaborator" ? (
+            ""
+          ) : (
+            <Dropdown.Item id="profile" className="p-0 ">
+              <Link
+                href="/profile"
+                className="w-full  flex items-center gap-2 p-2 rounded-2xl hover:bg-gray-200 hover:text-indigo-600"
+              >
+                <ImProfile />
+                Profile
+              </Link>
+            </Dropdown.Item>
+          )}
 
           <Dropdown.Item id="theme" className="p-0">
             {" "}

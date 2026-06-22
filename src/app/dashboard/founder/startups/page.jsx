@@ -12,9 +12,9 @@ const StartupsPage = async () => {
   const user = session?.user;
   const founderEmail = user?.email;
   const startups = await getFounderStartup(founderEmail);
- 
+
   return (
-    <div className="mb-20 mt-10">
+    <div className="pb-20 pt-10 dark:bg-slate-950">
       <div className="flex items-center justify-between p-5 gap-3">
         {" "}
         <h2>Manage all startups from here</h2>

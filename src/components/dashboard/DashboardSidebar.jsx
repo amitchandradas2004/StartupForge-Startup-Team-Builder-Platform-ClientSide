@@ -16,15 +16,16 @@ import { GrOverview } from "react-icons/gr";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { FaUserLarge } from "react-icons/fa6";
 import { usePathname } from "next/navigation";
+import { ImProfile } from "react-icons/im";
 
 export default function DashboardSideBar() {
   const pathname = usePathname();
-   const isActive = (href) =>
+  const isActive = (href) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
   const { data: session } = authClient.useSession();
   const user = session?.user;
   const role = user?.role || "founder";
-   const dashboardItems = {
+  const dashboardItems = {
     founder: [
       {
         icon: GrOverview,
@@ -63,6 +64,11 @@ export default function DashboardSideBar() {
         label: "Applications",
         href: "/dashboard/collaborator/applications",
       },
+      {
+        icon: ImProfile,
+        label: "Profile",
+        href: "/dashboard/collaborator/profile",
+      },
     ],
     admin: [
       {
@@ -93,7 +99,7 @@ export default function DashboardSideBar() {
   };
   return (
     <>
-      <div className="lg:hidden mt-5">
+      <div className="lg:hidden pt-5 dark:bg-slate-950">
         <Drawer>
           <Drawer.Trigger>
             <div
@@ -166,7 +172,7 @@ export default function DashboardSideBar() {
         </Drawer>
       </div>
 
-      <aside className="hidden lg:flex flex-col w-60 h-screen border-r-2 border-slate-200/60 dark:border-white/10 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl">
+      <aside className="hidden lg:flex flex-col w-60 min-h-screen border-r-2 border-slate-200/60 dark:border-white/10 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl">
         {/* Logo */}
         <div className="p-6 border-b border-slate-200/60 dark:border-white/10">
           <Link
