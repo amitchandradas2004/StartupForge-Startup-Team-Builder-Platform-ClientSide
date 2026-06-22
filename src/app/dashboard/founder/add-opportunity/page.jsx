@@ -17,6 +17,7 @@ import {
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { FaUser } from "react-icons/fa6";
+import Link from "next/link";
 
 const FounderAddOppturnityPage = () => {
   const [skillsInput, setSkillsInput] = useState("");
@@ -220,6 +221,15 @@ const FounderAddOppturnityPage = () => {
                 >
                   Create Opportunity
                 </Button>
+                <Link href={"/dashboard/founder/manage-opportunity"}>
+                  {" "}
+                  <Button
+                    variant="secondary"
+                    className="mt-2 w-full rounded-full h-12 transition-all duration-300 hover:scale-[1.02]"
+                  >
+                    Back to Opportunity
+                  </Button>
+                </Link>
               </motion.div>
             </motion.div>
           </Form>

@@ -18,7 +18,7 @@ const ManageOpportunityPage = async () => {
     <div className="pb-20 pt-10 dark:bg-slate-950 mx-auto w-full px-5 md:px-10">
       <div className="flex flex-col md:flex-row items-center justify-between p-5 gap-3 ">
         {" "}
-        <h2>Manage opportunity from here</h2>
+        <h2>Manage opportunity from here: {opportunities.length}</h2>
         <Link href={"/dashboard/founder/add-opportunity"}>
           <Button> Add new opportunity</Button>
         </Link>{" "}

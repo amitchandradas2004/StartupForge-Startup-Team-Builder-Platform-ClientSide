@@ -4,6 +4,7 @@ import { Table } from "@heroui/react";
 import { motion } from "framer-motion";
 import { UpdateOpportunityModal } from "./UpdateOpportunityModal";
 import { useState } from "react";
+import { DeleteOpportunity } from "./DeleteOpportunity";
 
 const rowVariants = {
   hidden: { opacity: 0, y: 10 },
@@ -84,11 +85,12 @@ export function OpportunityTable({ opportunities }) {
                     {opportunity.deadline}
                   </motion.div>
                 </Table.Cell>
-
                 <Table.Cell>
                   <UpdateOpportunityModal opportunity={opportunity} />
                 </Table.Cell>
-                <Table.Cell>delete</Table.Cell>
+                <Table.Cell>
+                  <DeleteOpportunity opportunity={opportunity} />
+                </Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>
