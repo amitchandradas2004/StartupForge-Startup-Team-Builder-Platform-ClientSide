@@ -69,7 +69,7 @@ const Testimonials = () => {
   return (
     <section className="w-full py-20 bg-white dark:bg-slate-950">
       {/* Header */}
-      <div className="max-w-5xl mx-auto px-6 text-center mb-12">
+      <div className="container mx-auto px-6 text-center mb-12">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -90,7 +90,7 @@ const Testimonials = () => {
       </div>
 
       {/* Slider */}
-      <div className="max-w-3xl mx-auto px-6 relative">
+      <div className="container mx-auto px-6 relative">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}

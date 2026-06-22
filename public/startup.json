@@ -1,0 +1,242 @@
+[
+  {
+    "startUpName": "2nd startup",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "FinTech",
+    "funding_stage": "Pre-Seed",
+    "description": "My 2nd startup is here.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "Finova",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "FinTech",
+    "funding_stage": "Seed",
+    "description": "Digital wallet for seamless global payments.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "Medora Health",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "HealthTech",
+    "funding_stage": "Seed",
+    "description": "AI-based patient monitoring system.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "LearnSphere",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "EdTech",
+    "funding_stage": "Idea Stage",
+    "description": "Personalized learning platform for students.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "PayNest",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "FinTech",
+    "funding_stage": "Series A",
+    "description": "Embedded payment infrastructure for startups.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "GreenPulse",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "Climate Tech",
+    "funding_stage": "Bootstrapped",
+    "description": "Carbon tracking tools for sustainability.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "DevForge",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "Developer Tools",
+    "funding_stage": "Seed",
+    "description": "API development acceleration platform.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "CloudHive",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "Cloud Computing",
+    "funding_stage": "Series B",
+    "description": "Enterprise cloud orchestration system.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "BlockPoint",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "Blockchain & Web3",
+    "funding_stage": "Series A",
+    "description": "Decentralized identity platform.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "MarketLoop",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "Marketing Tech",
+    "funding_stage": "Seed",
+    "description": "AI marketing automation for SMBs.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "LogiSync",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "Logistics",
+    "funding_stage": "Growth Stage",
+    "description": "Smart supply chain tracking system.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "FinEdge",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "FinTech",
+    "funding_stage": "Seed",
+    "description": "Expense tracking for modern teams.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "NeuroAI",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "AI & Machine Learning",
+    "funding_stage": "Pre-Seed",
+    "description": "Predictive AI for business intelligence.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "CareSync",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "HealthTech",
+    "funding_stage": "Series C",
+    "description": "Hospital care coordination platform.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "Shopora",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "E-Commerce",
+    "funding_stage": "Seed",
+    "description": "AI-driven product recommendation engine.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "GameHive",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "Gaming",
+    "funding_stage": "Bootstrapped",
+    "description": "Indie multiplayer gaming platform.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "CyberShield",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "Cybersecurity",
+    "funding_stage": "Series A",
+    "description": "Real-time cyber threat detection.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "SocialNest",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "Social Media",
+    "funding_stage": "Idea Stage",
+    "description": "Community-first social platform.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "AgriNova",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "AgriTech",
+    "funding_stage": "Pre-Seed",
+    "description": "Smart farming IoT solutions.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "TravelMint",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "Travel & Tourism",
+    "funding_stage": "Seed",
+    "description": "AI travel planning assistant.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "DataCraft",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "Data Analytics",
+    "funding_stage": "Series B",
+    "description": "Real-time analytics dashboard.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "AutoPilotX",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "Automotive Tech",
+    "funding_stage": "Growth Stage",
+    "description": "Autonomous driving software solutions.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "HireFlow",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "HR Tech",
+    "funding_stage": "Seed",
+    "description": "AI recruitment automation system.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "CryptoNest",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "Blockchain & Web3",
+    "funding_stage": "Series A",
+    "description": "Crypto portfolio management platform.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "VisionLabs",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "AI & Machine Learning",
+    "funding_stage": "Series B",
+    "description": "Computer vision APIs for developers.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "UrbanCart",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "E-Commerce",
+    "funding_stage": "Bootstrapped",
+    "description": "Hyperlocal delivery marketplace.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "CleanGrid",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "Climate Tech",
+    "funding_stage": "Seed",
+    "description": "Smart energy optimization system.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "BuildStack",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "Developer Tools",
+    "funding_stage": "Pre-Seed",
+    "description": "Low-code development platform.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "AdSpark",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "Marketing Tech",
+    "funding_stage": "Series A",
+    "description": "AI ad optimization platform.",
+    "founderEmail": "founder2@gmail.com"
+  },
+  {
+    "startUpName": "FinTrack",
+    "logo": "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+    "industry": "FinTech",
+    "funding_stage": "Growth Stage",
+    "description": "Personal finance tracking app.",
+    "founderEmail": "founder2@gmail.com"
+  }
+]

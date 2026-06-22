@@ -12,7 +12,7 @@ const StartupsPage = async () => {
   const user = session?.user;
   const founderEmail = user?.email;
   const startups = await getFounderStartup(founderEmail);
-
+  
   return (
     <div className="pb-20 pt-10 dark:bg-slate-950 mx-auto  w-full px-5 md:px-10">
       <div className="flex flex-col md:flex-row items-center justify-between p-5 gap-3">

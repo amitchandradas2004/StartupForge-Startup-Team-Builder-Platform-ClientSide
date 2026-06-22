@@ -46,9 +46,8 @@ export function UpdateStartupModal({ startup }) {
     }
     toast.success("Startup updated successfully");
     window.location.reload();
-   };
+  };
 
-   
   return (
     <div className="flex flex-wrap gap-4">
       <Modal>
@@ -196,6 +195,56 @@ export function UpdateStartupModal({ startup }) {
                               </ListBox.Item>
                               <ListBox.Item id="growth" textValue="growth">
                                 Growth
+                              </ListBox.Item>
+                            </ListBox>
+                          </Select.Popover>
+                        </Select>
+                      </div>
+
+                      {/* team size needed */}
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                          Team Size Needed
+                        </label>
+
+                        <Select
+                          name="team_size_needed"
+                          placeholder="Select Team Size"
+                          className="w-full"
+                          isRequired
+                        >
+                          <Select.Trigger className="rounded-full">
+                            <Select.Value placeholder="Select team size" />
+                          </Select.Trigger>
+
+                          <Select.Popover className="rounded-3xl">
+                            <ListBox>
+                              <ListBox.Item id="1-2" textValue="1-2">
+                                1 - 2 Members (Very Early Stage)
+                              </ListBox.Item>
+
+                              <ListBox.Item id="2-5" textValue="2-5">
+                                2 - 5 Members (Small Team)
+                              </ListBox.Item>
+
+                              <ListBox.Item id="5-10" textValue="5-10">
+                                5 - 10 Members (Growing Team)
+                              </ListBox.Item>
+
+                              <ListBox.Item id="10-20" textValue="10-20">
+                                10 - 20 Members (Startup Scaling)
+                              </ListBox.Item>
+
+                              <ListBox.Item id="20-50" textValue="20-50">
+                                20 - 50 Members (Mid-size Startup)
+                              </ListBox.Item>
+
+                              <ListBox.Item id="50-100" textValue="50-100">
+                                50 - 100 Members (Large Startup Team)
+                              </ListBox.Item>
+
+                              <ListBox.Item id="100-plus" textValue="100-plus">
+                                100+ Members (Enterprise Scale)
                               </ListBox.Item>
                             </ListBox>
                           </Select.Popover>

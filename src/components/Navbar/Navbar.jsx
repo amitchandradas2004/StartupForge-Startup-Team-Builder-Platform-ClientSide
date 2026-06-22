@@ -53,27 +53,6 @@ const Navbar = () => {
           <span className="text-xl font-bold">StartUp Forge</span>
         </Link>
 
-        {/* Desktop Menu - Added Glassmorphic "Blur Button" effects */}
-        {/* <div className="hidden md:flex items-center gap-2 text-xs">
-          <Link
-            href="/"
-            className="px-4 py-1 rounded-full font-medium transition-all duration-200 backdrop-blur-md bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 hover:text-indigo-600"
-          >
-            Home
-          </Link>
-          <Link
-            href="/browseStartups"
-            className="px-4 py-1 rounded-full font-medium transition-all duration-200 backdrop-blur-md bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 hover:text-indigo-600"
-          >
-            Startups
-          </Link>
-          <Link
-            href="/browseOpportunities"
-            className="px-4 py-1 rounded-full font-medium transition-all duration-200 backdrop-blur-md bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 hover:text-indigo-600"
-          >
-            Opportunities
-          </Link>
-        </div> */}
         <div className="hidden md:flex items-center gap-2 text-xs">
           <Link
             href="/"

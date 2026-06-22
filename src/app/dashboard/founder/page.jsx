@@ -12,7 +12,7 @@ export default async function OverviewPage() {
   const opportunities = await getFounderOpportunity(founderEmail);
 
   return (
-    <div className="p-6">
+    <div className="pt-10 px-5 container bg-white dark:bg-slate-950 w-full h-screen">
       <OverviewCards
         totalOpportunities={opportunities.length}
         totalApplications={48}

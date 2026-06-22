@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       data-theme="light"
       className={`${spaceGrotesk.className} ${inter.className} h-full antialiased`}
     >
-      <body className="h-full">
+      <body className="h-full bg-white dark:bg-slate-950 w-full">
         <Providers>
           <main className="flex">
             <DashboardSideBar />

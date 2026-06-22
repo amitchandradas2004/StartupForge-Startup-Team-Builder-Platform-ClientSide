@@ -165,28 +165,103 @@ const FounderstartupsPage = () => {
 
                     <Select.Popover className="rounded-3xl">
                       <ListBox>
-                        <ListBox.Item id="technology" textValue="technology">
-                          Technology
+                        <ListBox.Item id="ai-ml" textValue="ai-ml">
+                          AI & Machine Learning
+                        </ListBox.Item>
+
+                        <ListBox.Item id="saas" textValue="saas">
+                          Software as a Service (SaaS)
                         </ListBox.Item>
 
                         <ListBox.Item id="fintech" textValue="fintech">
-                          Fintech
+                          FinTech
                         </ListBox.Item>
 
                         <ListBox.Item id="healthtech" textValue="healthtech">
                           HealthTech
                         </ListBox.Item>
 
-                        <ListBox.Item id="e-commerce" textValue="e-commerce">
+                        <ListBox.Item id="edtech" textValue="edtech">
+                          EdTech
+                        </ListBox.Item>
+
+                        <ListBox.Item id="ecommerce" textValue="ecommerce">
                           E-Commerce
                         </ListBox.Item>
 
-                        <ListBox.Item id="ai/ml" textValue="ai/ml">
-                          AI/ML
+                        <ListBox.Item
+                          id="cybersecurity"
+                          textValue="cybersecurity"
+                        >
+                          Cybersecurity
                         </ListBox.Item>
 
-                        <ListBox.Item id="green-tech" textValue="green-tech">
-                          Green Tech
+                        <ListBox.Item
+                          id="developer-tools"
+                          textValue="developer-tools"
+                        >
+                          Developer Tools
+                        </ListBox.Item>
+
+                        <ListBox.Item
+                          id="cloud-computing"
+                          textValue="cloud-computing"
+                        >
+                          Cloud Computing
+                        </ListBox.Item>
+
+                        <ListBox.Item
+                          id="data-analytics"
+                          textValue="data-analytics"
+                        >
+                          Data Analytics
+                        </ListBox.Item>
+
+                        <ListBox.Item
+                          id="blockchain-web3"
+                          textValue="blockchain-web3"
+                        >
+                          Blockchain & Web3
+                        </ListBox.Item>
+
+                        <ListBox.Item id="gaming" textValue="gaming">
+                          Gaming
+                        </ListBox.Item>
+
+                        <ListBox.Item
+                          id="social-media"
+                          textValue="social-media"
+                        >
+                          Social Media
+                        </ListBox.Item>
+
+                        <ListBox.Item
+                          id="climate-tech"
+                          textValue="climate-tech"
+                        >
+                          Climate Tech
+                        </ListBox.Item>
+
+                        <ListBox.Item id="agritech" textValue="agritech">
+                          AgriTech
+                        </ListBox.Item>
+
+                        <ListBox.Item id="logistics" textValue="logistics">
+                          Logistics & Supply Chain
+                        </ListBox.Item>
+
+                        <ListBox.Item
+                          id="real-estate-tech"
+                          textValue="real-estate-tech"
+                        >
+                          Real Estate Tech
+                        </ListBox.Item>
+
+                        <ListBox.Item
+                          id="marketing-tech"
+                          textValue="marketing-tech"
+                        >
+                          Marketing Tech
                         </ListBox.Item>
 
                         <ListBox.Item id="other" textValue="other">
@@ -212,8 +287,15 @@ const FounderstartupsPage = () => {
 
                     <Select.Popover className="rounded-3xl">
                       <ListBox>
-                        <ListBox.Item id="idea" textValue="idea">
-                          Idea
+                        <ListBox.Item id="idea-stage" textValue="idea-stage">
+                          Idea Stage
+                        </ListBox.Item>
+
+                        <ListBox.Item
+                          id="bootstrapped"
+                          textValue="bootstrapped"
+                        >
+                          Bootstrapped
                         </ListBox.Item>
 
                         <ListBox.Item id="pre-seed" textValue="pre-seed">
@@ -224,26 +306,88 @@ const FounderstartupsPage = () => {
                           Seed
                         </ListBox.Item>
 
+                        <ListBox.Item
+                          id="angel-funded"
+                          textValue="angel-funded"
+                        >
+                          Angel Funded
+                        </ListBox.Item>
+
                         <ListBox.Item id="series-a" textValue="series-a">
-                          Series-A
+                          Series A
                         </ListBox.Item>
 
                         <ListBox.Item id="series-b" textValue="series-b">
-                          Series-B
+                          Series B
                         </ListBox.Item>
 
                         <ListBox.Item id="series-c" textValue="series-c">
-                          Series-C
+                          Series C
                         </ListBox.Item>
 
-                        <ListBox.Item id="growth" textValue="growth">
-                          Growth
+                        <ListBox.Item
+                          id="growth-stage"
+                          textValue="growth-stage"
+                        >
+                          Growth Stage
+                        </ListBox.Item>
+
+                        <ListBox.Item id="profitable" textValue="profitable">
+                          Profitable
                         </ListBox.Item>
                       </ListBox>
                     </Select.Popover>
                   </Select>
                 </motion.div>
+                {/* Team Size Needed */}
+                <motion.div variants={itemVariants}>
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    Team Size Needed
+                  </label>
 
+                  <Select
+                    name="team_size_needed"
+                    placeholder="Select Team Size"
+                    className="w-full"
+                    isRequired
+                  >
+                    <Select.Trigger className="rounded-full">
+                      <Select.Value placeholder="Select team size" />
+                    </Select.Trigger>
+
+                    <Select.Popover className="rounded-3xl">
+                      <ListBox>
+                        <ListBox.Item id="1-2" textValue="1-2">
+                          1 - 2 Members (Very Early Stage)
+                        </ListBox.Item>
+
+                        <ListBox.Item id="2-5" textValue="2-5">
+                          2 - 5 Members (Small Team)
+                        </ListBox.Item>
+
+                        <ListBox.Item id="5-10" textValue="5-10">
+                          5 - 10 Members (Growing Team)
+                        </ListBox.Item>
+
+                        <ListBox.Item id="10-20" textValue="10-20">
+                          10 - 20 Members (Startup Scaling)
+                        </ListBox.Item>
+
+                        <ListBox.Item id="20-50" textValue="20-50">
+                          20 - 50 Members (Mid-size Startup)
+                        </ListBox.Item>
+
+                        <ListBox.Item id="50-100" textValue="50-100">
+                          50 - 100 Members (Large Startup Team)
+                        </ListBox.Item>
+
+                        <ListBox.Item id="100-plus" textValue="100-plus">
+                          100+ Members (Enterprise Scale)
+                        </ListBox.Item>
+                      </ListBox>
+                    </Select.Popover>
+                  </Select>
+                </motion.div>
                 {/* Description */}
                 <motion.div variants={itemVariants}>
                   <TextField isRequired name="description">

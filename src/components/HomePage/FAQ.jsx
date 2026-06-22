@@ -112,7 +112,7 @@ export default function FAQ() {
         </motion.div>
 
         {/* FAQ */}
-        <Accordion className="max-w-4xl mx-auto space-y-4">
+        <Accordion className="container mx-auto space-y-4">
           {faqData.map((item, index) => {
             const Icon = item.icon;
 

@@ -85,7 +85,7 @@ const StartupStatistics = () => {
   return (
     <section ref={ref} className="w-full py-20 bg-white dark:bg-slate-950">
       {/* Header */}
-      <div className="max-w-6xl mx-auto px-6 text-center mb-14">
+      <div className="container mx-auto px-6 text-center mb-14">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -107,7 +107,7 @@ const StartupStatistics = () => {
       </div>
 
       {/* Grid */}
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((item, index) => {
           const count = useCountUp(item.value, 1500, isVisible);
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { motion } from "framer-motion";
 import { FaArrowRight, FaBriefcase, FaLaptopHouse } from "react-icons/fa";
 
@@ -18,6 +19,10 @@ const cardVariants = {
 };
 
 const OpportunityCard = ({ opportunity, index }) => {
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+  const role = user?.role;
+
   return (
     <motion.div
       variants={cardVariants}
@@ -89,22 +94,31 @@ const OpportunityCard = ({ opportunity, index }) => {
         </div>
 
         {/* CTA */}
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="mt-8 flex w-full items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-violet-600 to-indigo-600 py-3.5 font-semibold text-white shadow-lg shadow-violet-600/20"
-        >
-          View Details
-          <motion.div
-            animate={{ x: [0, 4, 0] }}
-            transition={{
-              repeat: Infinity,
-              duration: 1.5,
-            }}
+        {role === "collaborator" ? (
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="mt-8 flex w-full items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-violet-600 to-indigo-600 py-3.5 font-semibold text-white shadow-lg shadow-violet-600/20"
           >
-            <FaArrowRight />
-          </motion.div>
-        </motion.button>
+            View Details
+            <motion.div
+              animate={{ x: [0, 4, 0] }}
+              transition={{
+                repeat: Infinity,
+                duration: 1.5,
+              }}
+            >
+              <FaArrowRight />
+            </motion.div>
+          </motion.button>
+        ) : (
+          <div className="flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 mt-5">
+            <span>🔒</span>
+            <span className="text-sm font-medium text-slate-600 dark:text-slate-300">
+              Only collaborators can apply
+            </span>
+          </div>
+        )}
       </div>
     </motion.div>
   );

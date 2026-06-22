@@ -64,7 +64,7 @@ const WhyJoinStartupForge = () => {
   return (
     <section className="w-full pt-10 pb-20 bg-white dark:bg-slate-950">
       {/* Header */}
-      <div className="max-w-6xl mx-auto px-6 text-center mb-12">
+      <div className="container mx-auto text-center mb-12">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -92,13 +92,14 @@ const WhyJoinStartupForge = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        className=" container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
       >
         {reasons.map((item, index) => (
           <motion.div
             key={index}
             variants={cardVariants}
-            className="group p-6 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-xl border border-slate-200/20 dark:border-white/10 hover:border-indigo-500/40 transition-all duration-300 ease-in-out shadow-lg hover:shadow-indigo-500/10 transform hover:scale-[1.03]" >
+            className="group p-6 rounded-2xl bg-white/10 dark:bg-white/5 backdrop-blur-xl border border-slate-200/20 dark:border-white/10 hover:border-indigo-500/40 transition-all duration-300 ease-in-out shadow-lg hover:shadow-indigo-500/10 transform hover:scale-[1.03]"
+          >
             {/* Icon */}
             <div className="text-3xl mb-4">{item.icon}</div>
 

@@ -66,7 +66,7 @@ const CommunityHighlights = () => {
   return (
     <section className="w-full py-20 bg-white dark:bg-slate-950">
       {/* Header */}
-      <div className="max-w-6xl mx-auto px-6 text-center mb-14">
+      <div className="container mx-auto px-6 text-center mb-14">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -93,7 +93,7 @@ const CommunityHighlights = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
       >
         {highlights.map((item, index) => (
           <motion.div
