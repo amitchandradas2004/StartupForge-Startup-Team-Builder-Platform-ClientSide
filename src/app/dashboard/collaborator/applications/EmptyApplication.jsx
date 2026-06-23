@@ -36,7 +36,7 @@ const EmptyApplications = () => {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="mt-5 inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 w-60 lg:w-80 h-10 lg:h-13 justify-center font-medium text-white shadow-lg shadow-indigo-500/20"
+              className="mt-5 inline-flex items-center gap-3 rounded-xl bg-linear-to-r from-indigo-600 to-purple-600 w-60 lg:w-80 h-10 lg:h-13 justify-center font-medium text-white shadow-lg shadow-indigo-500/20"
             >
               Browse Opportunities
               <FaArrowRight />

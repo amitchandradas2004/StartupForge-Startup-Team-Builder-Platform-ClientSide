@@ -33,7 +33,7 @@ export function DeleteOpportunity({ opportunity }) {
         variant="blur"
       >
         <AlertDialog.Container>
-          <AlertDialog.Dialog className="sm:max-w-[420px]">
+          <AlertDialog.Dialog className="sm:max-w-105">
             <AlertDialog.CloseTrigger />
             <AlertDialog.Header className="items-center text-center">
               <AlertDialog.Icon status="danger">

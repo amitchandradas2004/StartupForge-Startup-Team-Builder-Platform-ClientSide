@@ -1,3 +1,4 @@
+
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 export const getFounderOpportunity = async (founderEmail) => {
   const params = new URLSearchParams({
