@@ -185,19 +185,16 @@ const Navbar = () => {
                   </Link>
                 </Dropdown.Item>
 
-                {role === "collaborator" ? (
-                  ""
-                ) : (
-                  <Dropdown.Item id="profile" className="p-0">
-                    <Link
-                      href="/profile"
-                      className="w-full flex items-center gap-2 p-2 rounded-xl transition hover:backdrop-blur-md hover:bg-black/5 dark:hover:bg-white/10 hover:text-indigo-600"
-                    >
-                      <ImProfile />
-                      Profile
-                    </Link>
-                  </Dropdown.Item>
-                )}
+                <Dropdown.Item id="profile" className="p-0">
+                  <Link
+                    href="/profile"
+                    className="w-full flex items-center gap-2 p-2 rounded-xl transition hover:backdrop-blur-md hover:bg-black/5 dark:hover:bg-white/10 hover:text-indigo-600"
+                  >
+                    <ImProfile />
+                    Profile
+                  </Link>
+                </Dropdown.Item>
+
                 <Dropdown.Item id="browseStartups" className="p-0">
                   <Link
                     href="/browseStartups"

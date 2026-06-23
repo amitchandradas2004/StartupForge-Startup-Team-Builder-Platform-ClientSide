@@ -67,7 +67,7 @@ export default function DashboardSideBar() {
       {
         icon: ImProfile,
         label: "Profile",
-        href: "/dashboard/collaborator/profile",
+        href: "/dashboard/profile",
       },
     ],
     admin: [

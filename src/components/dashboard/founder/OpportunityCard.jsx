@@ -2,6 +2,7 @@
 
 import { authClient } from "@/lib/auth-client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { FaArrowRight, FaBriefcase, FaLaptopHouse } from "react-icons/fa";
 
 const cardVariants = {
@@ -22,7 +23,8 @@ const OpportunityCard = ({ opportunity, index }) => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
   const role = user?.role;
-
+  const { _id, role_title, work_type, commitment_level } = opportunity;
+ 
   return (
     <motion.div
       variants={cardVariants}
@@ -49,7 +51,7 @@ const OpportunityCard = ({ opportunity, index }) => {
             </span>
 
             <h2 className="mt-4 line-clamp-2 text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-              {opportunity.role_title}
+              {role_title}
             </h2>
           </div>
 
@@ -65,12 +67,12 @@ const OpportunityCard = ({ opportunity, index }) => {
         <div className="mt-5 flex flex-wrap gap-2">
           <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-2 text-xs font-medium dark:border-slate-700">
             <FaLaptopHouse />
-            {opportunity.work_type}
+            {work_type}
           </span>
 
           <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-2 text-xs font-medium dark:border-slate-700">
             <FaBriefcase />
-            {opportunity.commitment_level}
+            {commitment_level}
           </span>
         </div>
 
@@ -95,22 +97,15 @@ const OpportunityCard = ({ opportunity, index }) => {
 
         {/* CTA */}
         {role === "collaborator" ? (
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="mt-8 flex w-full items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-violet-600 to-indigo-600 py-3.5 font-semibold text-white shadow-lg shadow-violet-600/20"
-          >
-            View Details
-            <motion.div
-              animate={{ x: [0, 4, 0] }}
-              transition={{
-                repeat: Infinity,
-                duration: 1.5,
-              }}
-            >
-              <FaArrowRight />
-            </motion.div>
-          </motion.button>
+          <Link href={`/browseOpportunities/${_id}`}>
+            {" "}
+            <button className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-violet-600 to-indigo-600 py-2 font-semibold text-white shadow-lg shadow-violet-600/20">
+              View Details
+              <div>
+                <FaArrowRight />
+              </div>
+            </button>
+          </Link>
         ) : (
           <div className="flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 mt-5">
             <span>🔒</span>
