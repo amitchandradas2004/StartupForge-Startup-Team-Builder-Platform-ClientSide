@@ -130,15 +130,17 @@ const FounderstartupsPage = () => {
                   whileHover={{ scale: 1.01 }}
                   className="flex flex-col gap-3"
                 >
-                  <Label>Logo</Label>
+                  <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                    Logo
+                  </p>
 
-                  <div className="h-14 w-full border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-2xl flex items-center justify-center transition-all duration-300 hover:border-indigo-500">
-                    <label
-                      htmlFor="image-upload"
-                      className="cursor-pointer block text-center w-full"
-                    >
-                      <p className="font-medium">Click here to upload logo</p>
-                    </label>
+                  <label
+                    htmlFor="image-upload"
+                    className="h-14 w-full border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-2xl flex items-center justify-center cursor-pointer transition-all duration-300 hover:border-indigo-500"
+                  >
+                    <p className="font-medium text-slate-600 dark:text-slate-300">
+                      Click anywhere to upload logo
+                    </p>
 
                     <input
                       required
@@ -147,7 +149,7 @@ const FounderstartupsPage = () => {
                       type="file"
                       className="hidden"
                     />
-                  </div>
+                  </label>
                 </motion.div>
 
                 {/* Industry */}

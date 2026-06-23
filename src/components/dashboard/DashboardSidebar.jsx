@@ -67,7 +67,7 @@ export default function DashboardSideBar() {
       {
         icon: ImProfile,
         label: "Profile",
-        href: "/dashboard/profile",
+        href: "/dashboard/collaborator/profile",
       },
     ],
     admin: [
@@ -201,16 +201,11 @@ export default function DashboardSideBar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`
-  flex items-center gap-3
-  rounded-xl px-4 py-3
-  text-sm font-medium
-  transition
-  ${
-    isActive(item.href)
-      ? "bg-indigo-100 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400"
-      : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-indigo-600"
-  }
+                className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition ${
+                  isActive(item.href)
+                    ? "bg-indigo-100 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400"
+                    : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-indigo-600"
+                }
 `}
               >
                 <Icon className="size-5 opacity-80" />

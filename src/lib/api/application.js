@@ -8,3 +8,10 @@ export const getApplicationsByApplicantEmail = async (applicantEmail) => {
   });
   return res.json();
 };
+
+export const getAllApplications = async () => {
+  const res = await fetch(`${baseUrl}/api/applications`, {
+    cache: "no-store",
+  });
+  return res.json();
+};

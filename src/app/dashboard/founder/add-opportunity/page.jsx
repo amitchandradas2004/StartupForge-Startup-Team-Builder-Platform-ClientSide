@@ -17,10 +17,14 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { FaUser } from "react-icons/fa6";
 import Link from "next/link";
-
+import { redirect } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
+ 
 const FounderAddOppturnityPage = () => {
   const [skillsInput, setSkillsInput] = useState("");
-
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+  const founderEmail = user?.email;
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -33,11 +37,12 @@ const FounderAddOppturnityPage = () => {
           .filter(Boolean),
       ),
     ];
-    const opportunityData = { ...data, skills };
+    const opportunityData = { ...data, skills, founderEmail };
 
     const res = await createOpportynity(opportunityData);
     if (res.insertedId) {
       toast.success(`Opportynity created successfully`);
+      redirect("/dashboard/founder/manage-opportunity");
     }
   };
   const containerVariants = {
