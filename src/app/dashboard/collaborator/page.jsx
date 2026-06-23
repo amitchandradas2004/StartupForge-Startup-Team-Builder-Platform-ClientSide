@@ -19,6 +19,19 @@ const CollaboratorPage = () => {
     rejectedApplications: 0,
   };
 
+  //TODO:  
+  // const stats = {
+  //   totalApplications: applications.length,
+  //   pendingApplications: applications.filter(
+  //     app => app.status === "pending"
+  //   ).length,
+  //   approvedApplications: applications.filter(
+  //     app => app.status === "approved"
+  //   ).length,
+  //   rejectedApplications: applications.filter(
+  //     app => app.status === "rejected"
+  //   ).length,
+  // };
   return (
     <section className="min-h-screen bg-white w-full dark:bg-slate-950 p-4 md:p-6 lg:p-8">
       <div className="mx-auto container">
