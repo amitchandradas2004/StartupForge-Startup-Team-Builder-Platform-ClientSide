@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import {
   FaBriefcase,
   FaCalendarAlt,
@@ -8,6 +9,7 @@ import {
   FaArrowRight,
   FaCode,
 } from "react-icons/fa";
+import { ApplyOpportunityModal } from "../collaborator/ApplyOpportunityModal";
 
 export default function OpportunityDetails({ opportunity }) {
   const { role_title, work_type, commitment_level, deadline, skills } =
@@ -116,7 +118,6 @@ export default function OpportunityDetails({ opportunity }) {
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">
                 Opportunity Details
               </h3>
-
               <div className="space-y-5">
                 <div className="flex items-center gap-4">
                   <FaLaptopHouse className="text-indigo-500 text-lg" />
@@ -150,16 +151,8 @@ export default function OpportunityDetails({ opportunity }) {
                   </div>
                 </div>
               </div>
-
               {/* Apply Button */}
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="mt-8 w-full rounded-full bg-linear-to-r from-indigo-600 via-purple-600 to-pink-600 py-4 font-semibold text-white shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-3"
-              >
-                Apply Now
-                <FaArrowRight />
-              </motion.button>
+             <ApplyOpportunityModal opportunity={opportunity}/>
             </div>
           </motion.div>
         </div>

@@ -99,7 +99,7 @@ const OpportunityCard = ({ opportunity, index }) => {
         {role === "collaborator" ? (
           <Link href={`/browseOpportunities/${_id}`}>
             {" "}
-            <button className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-violet-600 to-indigo-600 py-2 font-semibold text-white shadow-lg shadow-violet-600/20">
+            <button className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-violet-600 to-indigo-600 py-2 font-semibold text-white shadow-lg shadow-violet-600/20 cursor-pointer">
               View Details
               <div>
                 <FaArrowRight />
