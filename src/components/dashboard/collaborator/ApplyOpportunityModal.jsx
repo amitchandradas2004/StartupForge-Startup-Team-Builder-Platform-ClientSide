@@ -11,6 +11,7 @@ import {
   TextArea,
   TextField,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
 import { FaArrowRight } from "react-icons/fa6";
 import { VscGitStashApply } from "react-icons/vsc";
@@ -21,7 +22,7 @@ export function ApplyOpportunityModal({ opportunity }) {
   const user = session?.user;
   const applicantEmail = user?.email;
   const opportunityID = _id;
-  const status = 'pending'
+  const status = "pending";
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -30,11 +31,13 @@ export function ApplyOpportunityModal({ opportunity }) {
       ...modalData,
       applicantEmail,
       opportunityID,
-      status
+      status,
+      opportunityName: role_title,
     };
     const res = await submitApplication(applicationData);
     if (res.insertedId) {
       toast.success("Application submitted successfully");
+      redirect("/dashboard/collaborator/applications");
     }
   };
   return (

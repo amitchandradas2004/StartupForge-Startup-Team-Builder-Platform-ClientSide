@@ -6,7 +6,7 @@ import { FaBriefcase, FaArrowRight } from "react-icons/fa";
 
 const EmptyApplications = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 w-full">
+    <section className="min-h-screen flex items-center md:items-start justify-center pr-4 w-full">
       <div className="flex  justify-center ">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
@@ -44,7 +44,7 @@ const EmptyApplications = () => {
           </Link>
 
           {/* Small Hint */}
-          <p className="mt-2 lg:mt-5 text-xs lg:text-xl text-slate-500 dark:text-slate-500">
+          <p className="mt-5 text-xs lg:text-xl text-slate-500 dark:text-slate-500">
             Find opportunities that match your skills and interests.
           </p>
         </motion.div>
