@@ -12,15 +12,30 @@ const StartupsPage = async () => {
   const user = session?.user;
   const founderEmail = user?.email;
   const startups = await getFounderStartup(founderEmail);
-  
+
   return (
     <div className="pb-20 pt-10 dark:bg-slate-950 mx-auto  w-full px-5 md:px-10">
-      <div className="flex flex-col md:flex-row items-center justify-between p-5 gap-3">
-        {" "}
-        <h2>Manage all startups from here</h2>
-        <Link href={"/dashboard/founder/startups/new"}>
-          <Button> Add new Startup</Button>
-        </Link>{" "}
+      <div className="mb-6 flex flex-col md:flex-row items-center justify-between gap-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm">
+        <div>
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
+            Startup Management
+          </p>
+
+          <h2 className="mt-1 text-xl font-bold text-slate-900 dark:text-white">
+            Manage Your Startups : {startups.length}
+          </h2>
+
+          <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+            Create, update, and monitor all your startup profiles from one
+            place.
+          </p>
+        </div>
+
+        <Link href="/dashboard/founder/startups/new">
+          <Button className="bg-indigo-600 hover:bg-indigo-700 text-white px-5">
+            + Add New Startup
+          </Button>
+        </Link>
       </div>
       {startups.length > 0 ? (
         <StartupTable startups={startups} />

@@ -27,16 +27,15 @@ const FounderstartupsPage = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
-
     const uploadedLogo = await imageUpload(data.logo);
 
     const startupData = {
       ...data,
       logo: uploadedLogo.url,
       founderEmail: userEmail,
+      status: "pending",
     };
 
     const res = await createStartup(startupData);

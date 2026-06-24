@@ -6,7 +6,7 @@ const AdminStartupsPage = async () => {
   const startups = await getAllStarups();
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden dark:bg-slate-950 px-4 py-6">
+    <div className="min-h-screen w-full overflow-x-hidden dark:bg-slate-950 px-4 py-10">
       {startups.length === 0 ? (
         <AdminNoStartups />
       ) : (

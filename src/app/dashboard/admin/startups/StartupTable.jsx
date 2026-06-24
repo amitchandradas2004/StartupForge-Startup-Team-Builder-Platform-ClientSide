@@ -1,8 +1,18 @@
 "use client";
+import { updateStartupStatus } from "@/lib/actions/startup";
 import { Table } from "@heroui/react";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 
 export function StartupTable({ startups }) {
+  const handleApprove = async (id) => {
+    const result = await updateStartupStatus(id, {
+      status: "approved",
+    });
+    if (result.modifiedCount > 0) {
+      toast.success("Startup approved successfully");
+    }
+  };
   return (
     <div className=" w-full h-screen pb-10 px-3">
       <motion.div
@@ -87,9 +97,26 @@ export function StartupTable({ startups }) {
                   <Table.Cell>{startup?.startUpName}</Table.Cell>
                   <Table.Cell>{startup?.industry}</Table.Cell>
                   <Table.Cell>{startup?.funding_stage}</Table.Cell>
-                  <Table.Cell>Pending</Table.Cell>
                   <Table.Cell>
-                    <button className="px-3 py-1 text-sm font-medium text-white bg-green-600 rounded-full hover:bg-green-700 btn-scale">
+                    <div
+                      className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
+                        startup.status === "approved"
+                          ? "bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-400"
+                          : startup.status === "pending"
+                            ? "bg-yellow-100 text-yellow-700 dark:bg-yellow-500/20 dark:text-yellow-400"
+                            : startup.status === "rejected"
+                              ? "bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-400"
+                              : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                      }`}
+                    >
+                      {startup.status}
+                    </div>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <button
+                      onClick={() => handleApprove(startup._id)}
+                      className="px-3 py-1 text-sm font-medium text-white bg-green-600 rounded-full hover:bg-green-700 btn-scale"
+                    >
                       Approve
                     </button>
                   </Table.Cell>
