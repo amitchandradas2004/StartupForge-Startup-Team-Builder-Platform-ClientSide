@@ -18,10 +18,14 @@ import { VscGitStashApply } from "react-icons/vsc";
 
 export function ApplyOpportunityModal({ opportunity }) {
   const { role_title, _id } = opportunity;
+
+  console.log(opportunity, "opportunity");
   const { data: session } = authClient.useSession();
   const user = session?.user;
   const applicantEmail = user?.email;
+  const opportunityName = role_title;
   const opportunityID = _id;
+  const founderEmail = opportunity.founderEmail;
   const status = "pending";
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -30,9 +34,10 @@ export function ApplyOpportunityModal({ opportunity }) {
     const applicationData = {
       ...modalData,
       applicantEmail,
+      opportunityName,
       opportunityID,
+      founderEmail,
       status,
-      opportunityName: role_title,
     };
     const res = await submitApplication(applicationData);
     if (res.insertedId) {

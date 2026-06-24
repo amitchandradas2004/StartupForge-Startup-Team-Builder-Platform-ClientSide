@@ -9,8 +9,12 @@ export const getApplicationsByApplicantEmail = async (applicantEmail) => {
   return res.json();
 };
 
-export const getAllApplications = async () => {
-  const res = await fetch(`${baseUrl}/api/applications`, {
+export const getFounderAllApplications = async (founderEmail) => {
+  const params = new URLSearchParams({
+    founderEmail,
+  });
+  const url = `${baseUrl}/api/applications?${params.toString()}`;
+  const res = await fetch(url, {
     cache: "no-store",
   });
   return res.json();

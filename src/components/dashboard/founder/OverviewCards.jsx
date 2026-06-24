@@ -7,7 +7,7 @@ import { PiUsersFill } from "react-icons/pi";
 export default function OverviewCards({
   totalOpportunities = 0,
   totalApplications = 0,
-  acceptedMembers = 0,
+  approvedMembers = 0,
 }) {
   const stats = [
     {
@@ -26,7 +26,7 @@ export default function OverviewCards({
     },
     {
       label: "Accepted Members",
-      value: acceptedMembers,
+      value: approvedMembers,
       icon: PiUsersFill,
       color: "text-orange-600",
       bg: "bg-orange-100 dark:bg-orange-500/10",

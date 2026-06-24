@@ -1,9 +1,19 @@
-import { getAllApplications } from "@/lib/api/application";
+import { getFounderAllApplications } from "@/lib/api/application";
 import { ApplicationTable } from "./ApplicationTable";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const ApplicationPage = async () => {
-  // const applications =[]
-  const applications = await getAllApplications();
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  const user = session?.user;
+  const founderEmail = user?.email;
+  // console.log(founderEmail, "email");
+
+  const applications = await getFounderAllApplications(founderEmail);
+  console.log(applications.length, "length");
 
   return (
     <div className="dark:bg-slate-950 py-10 px-5 w-full">
