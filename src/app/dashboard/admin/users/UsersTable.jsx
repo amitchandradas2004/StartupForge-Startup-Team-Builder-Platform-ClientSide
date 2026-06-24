@@ -1,8 +1,26 @@
 "use client";
+import { updateUserStatus } from "@/lib/actions/user";
 import { Table } from "@heroui/react";
 import { motion } from "framer-motion";
 
 export function UsersTable({ users }) {
+  const handleUnblock = async (id) => {
+    const result = await updateUserStatus(id, {
+      status: "active",
+    });
+    if (result.modifiedCount > 0) {
+      toast.success("User activated successfully");
+    }
+  };
+
+  const handleBlock = async (id) => {
+    const result = await updateUserStatus(id, {
+      status: "blocked",
+    });
+    if (result.modifiedCount > 0) {
+      toast.success("User blocked successfully");
+    }
+  };
   return (
     <div className="w-full h-screen pb-10 px-3">
       <motion.div
@@ -88,7 +106,19 @@ export function UsersTable({ users }) {
                   <Table.Cell>{user?.name}</Table.Cell>
                   <Table.Cell>{user?.role}</Table.Cell>
                   <Table.Cell>{user?.plan}</Table.Cell>
-                  <Table.Cell>{user?.status}</Table.Cell>
+                  <Table.Cell>
+                    <span
+                      className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
+                        user?.status === "active"
+                          ? "bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-400"
+                          : user?.status === "blocked"
+                            ? "bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-400"
+                            : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                      }`}
+                    >
+                      {user?.status}
+                    </span>
+                  </Table.Cell>
                   <Table.Cell>
                     {new Date(user?.createdAt).toLocaleString("en-US", {
                       year: "numeric",
@@ -99,14 +129,29 @@ export function UsersTable({ users }) {
                     })}
                   </Table.Cell>
                   <Table.Cell>
-                    <button className="px-3 py-1 text-sm font-medium text-white bg-green-600 rounded-full hover:bg-green-700 btn-scale">
-                      Unblock
+                    <button
+                      disabled={user.status === "blocked"}
+                      onClick={() => handleBlock(user._id)}
+                      className={`px-3 py-1 text-sm font-medium text-white rounded-full btn-scale ${
+                        user.status === "blocked"
+                          ? "bg-red-400 cursor-not-allowed opacity-80"
+                          : "bg-red-600 hover:bg-red-700"
+                      }`}
+                    >
+                      Block
                     </button>
                   </Table.Cell>
-
                   <Table.Cell>
-                    <button className="px-3 py-1 text-sm font-medium text-white bg-red-600 rounded-full hover:bg-red-700 btn-scale">
-                      Block
+                    <button
+                      disabled={user.status === "active"}
+                      onClick={() => handleUnblock(user._id)}
+                      className={`px-3 py-1 text-sm font-medium text-white rounded-full btn-scale ${
+                        user.status === "active"
+                          ? "bg-green-400 cursor-not-allowed opacity-80"
+                          : "bg-green-600 hover:bg-green-700"
+                      }`}
+                    >
+                      Unblock
                     </button>
                   </Table.Cell>
                 </Table.Row>
