@@ -1,13 +1,8 @@
 import StartupCard from "@/components/dashboard/founder/StartupCard";
+import { getAllStarups } from "@/lib/api/startup";
 
 const Page = async () => {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
-  const res = await fetch(`${baseUrl}/api/startups`, {
-    cache: "no-store",
-  });
-
-  const startups = await res.json();
+  const startups = await getAllStarups();
 
   return (
     <section className="dark:bg-slate-950">

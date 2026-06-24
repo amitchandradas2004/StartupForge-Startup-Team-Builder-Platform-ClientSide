@@ -8,3 +8,8 @@ export const getFounderStartup = async (founderEmail) => {
   });
   return res.json();
 };
+
+export const getAllStarups = async () => {
+  const res = await fetch(`${baseUrl}/api/startups`, { cache: "no-store" });
+  return res.json();
+};

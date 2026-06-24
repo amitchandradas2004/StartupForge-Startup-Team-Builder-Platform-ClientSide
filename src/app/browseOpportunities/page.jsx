@@ -1,13 +1,8 @@
 import OpportunityCard from "@/components/dashboard/founder/OpportunityCard";
+import { getAllOpportunities } from "@/lib/api/opportunity";
 
 const page = async () => {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
-  const res = await fetch(`${baseUrl}/api/opportunities`, {
-    cache: "no-store",
-  });
-
-  const opportunities = await res.json();
+  const opportunities = await getAllOpportunities();
 
   return (
     <section className="dark:bg-slate-950">
