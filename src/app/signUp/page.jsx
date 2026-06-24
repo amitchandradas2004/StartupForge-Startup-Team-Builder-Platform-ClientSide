@@ -32,11 +32,13 @@ export default function SignUpPage() {
     const user = Object.fromEntries(formData.entries());
     const uploadedImage = await imageUpload(user.image);
     const plan = role === "collaborator" ? "collaborator_free" : "founder_free";
+    const status = role === "collaborator" ? "active" : "active";
     const { data, error } = await authClient.signUp.email({
       ...user,
       image: uploadedImage.url,
       role,
       plan,
+      status,
     });
 
     if (data) {

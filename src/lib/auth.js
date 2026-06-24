@@ -31,6 +31,9 @@ export const auth = betterAuth({
       plan: {
         default: "free",
       },
+      status: {
+        default: "active",
+      },
     },
   },
 });

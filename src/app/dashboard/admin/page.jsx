@@ -1,5 +1,5 @@
 import { getAllUsers } from "@/lib/api/user";
-import AdminOverviewCards from "./AdminOverviewCards";
+import AdminOverviewCards from "../../../components/dashboard/admin/AdminOverviewCards";
 import { getAllStarups } from "@/lib/api/startup";
 import { getAllOpportunities } from "@/lib/api/opportunity";
 
