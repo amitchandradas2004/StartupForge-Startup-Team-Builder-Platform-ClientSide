@@ -13,6 +13,14 @@ export function StartupTable({ startups }) {
       toast.success("Startup approved successfully");
     }
   };
+  const handleReject = async (id) => {
+    const result = await updateStartupStatus(id, {
+      status: "rejected",
+    });
+    if (result.modifiedCount > 0) {
+      toast.success("Startup rejected successfully");
+    }
+  };
   return (
     <div className=" w-full h-screen pb-10 px-3">
       <motion.div
@@ -114,15 +122,27 @@ export function StartupTable({ startups }) {
                   </Table.Cell>
                   <Table.Cell>
                     <button
+                      disabled={startup.status === "approved"}
                       onClick={() => handleApprove(startup._id)}
-                      className="px-3 py-1 text-sm font-medium text-white bg-green-600 rounded-full hover:bg-green-700 btn-scale"
+                      className={`px-3 py-1 text-sm font-medium text-white rounded-full btn-scale ${
+                        startup.status === "approved"
+                          ? "bg-green-400 cursor-not-allowed opacity-80"
+                          : "bg-green-600 hover:bg-green-700"
+                      }`}
                     >
                       Approve
                     </button>
                   </Table.Cell>
-
                   <Table.Cell>
-                    <button className="px-3 py-1 text-sm font-medium text-white bg-red-600 rounded-full hover:bg-red-700 btn-scale">
+                    <button
+                      disabled={startup.status === "rejected"}
+                      onClick={() => handleReject(startup._id)}
+                      className={`px-3 py-1 text-sm font-medium text-white rounded-full btn-scale ${
+                        startup.status === "rejected"
+                          ? "bg-red-400 cursor-not-allowed opacity-80"
+                          : "bg-red-600 hover:bg-red-700"
+                      }`}
+                    >
                       Remove
                     </button>
                   </Table.Cell>
