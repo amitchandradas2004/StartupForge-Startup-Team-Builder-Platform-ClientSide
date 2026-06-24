@@ -4,52 +4,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Inter } from "next/font/google";
 import toast from "react-hot-toast";
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 });
-
-const plans = [
-  {
-    name: "Free",
-    price: 0,
-    desc: "Perfect for exploring StartupForge and joining the ecosystem",
-    features: [
-      "Browse startup ideas",
-      "Browse opportunities",
-      "Basic profile access",
-      "Limited collaboration access",
-    ],
-    priceId: null,
-  },
-  {
-    name: "Premium",
-    price: 12,
-    desc: "For active builders and early-stage founders",
-    features: [
-      "Everything is Free",
-      "Post startup ideas",
-      "Co-founder matching",
-      "Unlimited collaborations",
-      "Priority visibility",
-    ],
-    priceId: "price_pro_123",
-    popular: true,
-  },
-  {
-    name: "Enterprice",
-    price: 29,
-    desc: "For serious industry level startups scaling fast",
-    features: [
-      "Everything in Enterprice",
-      "Investor visibility boost",
-      "Advanced analytics",
-      "Featured listings",
-      "Priority support",
-    ],
-    priceId: "price_premium_456",
-  },
-];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -69,20 +28,21 @@ const cardVariants = {
 const Pricing = () => {
   const handleCheckout = (plan) => {
     if (!plan.priceId) {
-      toast.success("Free plan is already selected.");
+      toast.success("Free plan selected");
       return;
     }
 
-    toast.success("Stripe Checkout (monthly):", {
+    toast.success(`${plan.name} plan selected`);
+    console.log({
       priceId: plan.priceId,
       billing: "monthly",
     });
   };
 
   return (
-    <section className="w-full py-20 bg-white dark:bg-slate-950">
+    <section className="py-20 bg-white dark:bg-slate-950">
       {/* Header */}
-      <div className="container mx-auto px-6 text-center mb-12">
+      <div className="text-center mb-14">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +59,7 @@ const Pricing = () => {
         </p>
       </div>
 
-      {/* Cards */}
+      {/* Pricing Cards */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -107,73 +67,135 @@ const Pricing = () => {
         viewport={{ once: true }}
         className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8"
       >
-        {plans.map((plan, i) => (
-          <motion.div
-            key={i}
-            variants={cardVariants}
-            whileHover={{ scale: 1.05, y: -8 }}
-            transition={{ type: "spring", stiffness: 180 }}
-            className={`relative rounded-2xl p-8 
-            backdrop-blur-xl border shadow-lg
-            transition-all duration-300 ease-in-out
-            ${
-              plan.popular
-                ? "bg-indigo-600 text-white border-indigo-400 shadow-indigo-500/30"
-                : "bg-white/10 dark:bg-white/5 border-slate-200/20 dark:border-white/10"
-            }`}
+        {/* Free Plan */}
+        <motion.div
+          variants={cardVariants}
+          whileHover={{ scale: 1.05, y: -8 }}
+          transition={{ type: "spring", stiffness: 180 }}
+          className="rounded-2xl p-8 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-lg"
+        >
+          <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
+            Free
+          </h3>
+
+          <div className="mt-5 flex items-end gap-1">
+            <span className="text-4xl font-extrabold text-slate-900 dark:text-white">
+              $0
+            </span>
+            <span className="text-sm text-slate-500">/mo</span>
+          </div>
+
+          <p
+            className={`mt-3 text-sm text-slate-600 dark:text-slate-400 ${inter.className}`}
           >
-            {/* Badge */}
-            {plan.popular && (
-              <motion.div
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-                className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 text-xs rounded-full bg-white text-indigo-600 font-semibold shadow"
-              >
-                Most Popular
-              </motion.div>
-            )}
+            Perfect for exploring StartupForge and joining the ecosystem.
+          </p>
 
-            {/* Plan Name */}
-            <h3 className="text-xl font-semibold">{plan.name}</h3>
+          <ul
+            className={`mt-6 space-y-3 text-sm text-slate-700 dark:text-slate-300 ${inter.className}`}
+          >
+            <li>✔ Browse startup ideas</li>
+            <li>✔ Browse opportunities</li>
+            <li>✔ Basic profile access</li>
+            <li>✔ Limited collaboration access</li>
+          </ul>
 
-            {/* Price */}
-            <div className="mt-5 flex items-end gap-1">
-              <span className="text-4xl font-extrabold">${plan.price}</span>
-              <span className="text-sm opacity-70">/mo</span>
-            </div>
+          <button
+            onClick={() =>
+              handleCheckout({
+                name: "Free",
+                priceId: null,
+              })
+            }
+            className="mt-8 w-full py-3 rounded-xl font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition"
+          >
+            Get Started
+          </button>
+        </motion.div>
 
-            {/* Description */}
-            <p className={`mt-3 text-sm opacity-80 ${inter.className}`}>
-              {plan.desc}
-            </p>
-
-            {/* Features */}
-            <ul className={`mt-6 space-y-2 text-sm ${inter.className}`}>
-              {plan.features.map((f, idx) => (
-                <li key={idx} className="flex items-center gap-2">
-                  ✔ {f}
-                </li>
-              ))}
-            </ul>
-
-            {/* CTA */}
-            <button
-              onClick={() => handleCheckout(plan)}
-              className={`mt-8 w-full py-3 rounded-xl font-medium transition-all duration-300
-           ${
-             plan.popular
-               ? "bg-white text-indigo-600 hover:bg-gray-100"
-               : "bg-indigo-600 text-white hover:bg-indigo-700"
-           }`}
-            >
-              {plan.name === "Free"
-                ? "Get Started"
-                : plan.popular
-                  ? "Get Pro"
-                  : "Get Premium"}
-            </button>
+        {/* Premium Plan */}
+        <motion.div
+          variants={cardVariants}
+          whileHover={{ scale: 1.05, y: -8 }}
+          transition={{ type: "spring", stiffness: 180 }}
+          className="relative rounded-2xl p-8 bg-indigo-600 text-white border border-indigo-400 shadow-lg shadow-indigo-500/30"
+        >
+          <motion.div
+            animate={{ scale: [1, 1.08, 1] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+            className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 text-xs rounded-full bg-white text-indigo-600 font-semibold shadow"
+          >
+            Most Popular
           </motion.div>
-        ))}
+
+          <h3 className="text-xl font-semibold">Premium</h3>
+
+          <div className="mt-5 flex items-end gap-1">
+            <span className="text-4xl font-extrabold">$12</span>
+            <span className="text-sm opacity-80">/mo</span>
+          </div>
+
+          <p className={`mt-3 text-sm opacity-90 ${inter.className}`}>
+            For active builders and early-stage founders.
+          </p>
+
+          <ul className={`mt-6 space-y-3 text-sm ${inter.className}`}>
+            <li>✔ Everything in Free</li>
+            <li>✔ Post startup ideas</li>
+            <li>✔ Co-founder matching</li>
+            <li>✔ Unlimited collaborations</li>
+            <li>✔ Priority visibility</li>
+          </ul>
+
+          <form action={"/api/subscription"} method="POST">
+            {" "}
+            <button
+              type="submit"
+              className="mt-8 w-full py-3 rounded-xl font-medium bg-white text-indigo-600 hover:bg-slate-100 transition"
+            >
+              Get Pro
+            </button>
+          </form>
+        </motion.div>
+
+        {/* Enterprise Plan */}
+        <motion.div
+          variants={cardVariants}
+          whileHover={{ scale: 1.05, y: -8 }}
+          transition={{ type: "spring", stiffness: 180 }}
+          className="rounded-2xl p-8 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-lg"
+        >
+          <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
+            Enterprise
+          </h3>
+
+          <div className="mt-5 flex items-end gap-1">
+            <span className="text-4xl font-extrabold text-slate-900 dark:text-white">
+              $29
+            </span>
+            <span className="text-sm text-slate-500">/mo</span>
+          </div>
+
+          <p
+            className={`mt-3 text-sm text-slate-600 dark:text-slate-400 ${inter.className}`}
+          >
+            For serious startups scaling fast.
+          </p>
+
+          <ul
+            className={`mt-6 space-y-3 text-sm text-slate-700 dark:text-slate-300 ${inter.className}`}
+          >
+            <li>✔ Everything in Premium</li>
+            <li>✔ Investor visibility boost</li>
+            <li>✔ Advanced analytics</li>
+            <li>✔ Featured listings</li>
+            <li>✔ Priority support</li>
+          </ul>
+
+          <button className="mt-8 w-full py-3 rounded-xl font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition">
+            Get Premium
+          </button>
+        </motion.div>
       </motion.div>
     </section>
   );
