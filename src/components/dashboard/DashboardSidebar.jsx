@@ -89,7 +89,7 @@ export default function DashboardSideBar() {
       {
         icon: RiMoneyDollarCircleFill,
         label: "Transactions",
-        href: "/dashboard/admin/transtions",
+        href: "/dashboard/admin/transactions",
       },
     ],
   };

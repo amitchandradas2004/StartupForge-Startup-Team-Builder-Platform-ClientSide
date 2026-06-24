@@ -1,5 +1,4 @@
 import { getAllUsers } from "@/lib/api/user";
-import React from "react";
 import { UsersTable } from "./UsersTable";
 import AdminNoUsers from "./AdminNoUsers";
 
