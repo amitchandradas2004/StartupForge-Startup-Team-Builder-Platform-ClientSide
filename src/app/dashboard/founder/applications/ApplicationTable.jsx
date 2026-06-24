@@ -67,6 +67,7 @@ export function ApplicationTable({ applications }) {
           </div>
         </div>
       </motion.div>
+
       <Table>
         <Table.ScrollContainer>
           <Table.Content aria-label="Collaborator Application Table">
@@ -81,20 +82,33 @@ export function ApplicationTable({ applications }) {
 
             <Table.Body>
               {applications.map((application, index) => (
-                <Table.Row key={application._id}>
+                <Table.Row
+                  key={application._id}
+                  className="table-row-animate table-row-hover"
+                  style={{
+                    animationDelay: `${index * 70}ms`,
+                  }}
+                >
                   <Table.Cell>{index + 1}</Table.Cell>
 
-                  <Table.Cell>{application.opportunityName}</Table.Cell>
-
                   <Table.Cell>
-                    {new Date(application.createdAt).toLocaleDateString(
-                      "en-US",
-                      {
-                        day: "numeric",
-                        month: "short",
-                        year: "numeric",
-                      },
-                    )}
+                    <div initial="hidden" animate="show">
+                      <span className="inline-flex items-center rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-400 px-3 py-1 text-xs font-semibold">
+                        {application?.opportunityName}
+                      </span>
+                    </div>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <span className="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-800 px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                      {new Date(application.createdAt).toLocaleDateString(
+                        "en-US",
+                        {
+                          day: "numeric",
+                          month: "short",
+                          year: "numeric",
+                        },
+                      )}
+                    </span>
                   </Table.Cell>
 
                   <Table.Cell>

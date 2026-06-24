@@ -16,18 +16,18 @@ const plans = [
     desc: "Perfect for exploring StartupForge and joining the ecosystem",
     features: [
       "Browse startup ideas",
-      "Join community discussions",
+      "Browse opportunities",
       "Basic profile access",
       "Limited collaboration access",
     ],
     priceId: null,
   },
   {
-    name: "Pro",
+    name: "Premium",
     price: 12,
     desc: "For active builders and early-stage founders",
     features: [
-      "Everything in Free",
+      "Everything is Free",
       "Post startup ideas",
       "Co-founder matching",
       "Unlimited collaborations",
@@ -37,11 +37,11 @@ const plans = [
     popular: true,
   },
   {
-    name: "Premium",
+    name: "Enterprice",
     price: 29,
-    desc: "For serious startups scaling fast",
+    desc: "For serious industry level startups scaling fast",
     features: [
-      "Everything in Pro",
+      "Everything in Enterprice",
       "Investor visibility boost",
       "Advanced analytics",
       "Featured listings",
@@ -69,7 +69,7 @@ const cardVariants = {
 const Pricing = () => {
   const handleCheckout = (plan) => {
     if (!plan.priceId) {
-      toast.success("Free plan selected");
+      toast.success("Free plan is already selected.");
       return;
     }
 

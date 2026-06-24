@@ -87,7 +87,7 @@ export function UsersTable({ users }) {
           <Table.Content aria-label="Users Table" className="">
             <Table.Header>
               <Table.Column isRowHeader>Number</Table.Column>
-              <Table.Column>Name</Table.Column>
+              <Table.Column>Name & Email</Table.Column>
               <Table.Column>Role</Table.Column>
               <Table.Column>Plan</Table.Column>
               <Table.Column>Status</Table.Column>
@@ -103,9 +103,51 @@ export function UsersTable({ users }) {
                   style={{ animationDelay: `${index * 60}ms` }}
                 >
                   <Table.Cell>{index + 1}</Table.Cell>
-                  <Table.Cell>{user?.name}</Table.Cell>
-                  <Table.Cell>{user?.role}</Table.Cell>
-                  <Table.Cell>{user?.plan}</Table.Cell>
+                  <Table.Cell>
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-linear-to-r from-indigo-500 to-purple-600 text-white flex items-center justify-center font-bold">
+                        {user?.name?.charAt(0)?.toUpperCase()}
+                      </div>
+
+                      <div>
+                        <p className="font-semibold text-slate-900 dark:text-white">
+                          {user?.name}
+                        </p>
+
+                        <p className="text-xs text-slate-500 dark:text-slate-400">
+                          {user?.email}
+                        </p>
+                      </div>
+                    </div>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <span
+                      className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
+                        user?.role === "admin"
+                          ? "bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-400"
+                          : user?.role === "founder"
+                            ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-400"
+                            : "bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-400"
+                      }`}
+                    >
+                      {user?.role}
+                    </span>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <span
+                      className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
+                        user?.plan === "premium"
+                          ? "bg-purple-100 text-purple-700 dark:bg-purple-500/20 dark:text-purple-400"
+                          : user?.plan === "founder_free"
+                            ? "bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-400"
+                            : user?.plan === "collaborator_free"
+                              ? "bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-400"
+                              : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                      }`}
+                    >
+                      {user?.plan}
+                    </span>
+                  </Table.Cell>
                   <Table.Cell>
                     <span
                       className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
@@ -120,25 +162,27 @@ export function UsersTable({ users }) {
                     </span>
                   </Table.Cell>
                   <Table.Cell>
-                    {new Date(user?.createdAt).toLocaleString("en-US", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
+                    <span className="inline-flex items-center rounded-xl bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-400 px-3 py-1 text-xs font-medium">
+                      {new Date(user?.createdAt).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </span>
                   </Table.Cell>
                   <Table.Cell>
                     <button
-                      disabled={user.status === "blocked"}
+                      disabled={
+                        user.status === "blocked" || user.role === "admin"
+                      }
                       onClick={() => handleBlock(user._id)}
-                      className={`px-3 py-1 text-sm font-medium text-white rounded-full btn-scale ${
-                        user.status === "blocked"
+                      className={`px-3 py-1 text-sm font-medium text-white rounded-full ${
+                        user.status === "blocked" || user.role === "admin"
                           ? "bg-red-400 cursor-not-allowed opacity-80"
                           : "bg-red-600 hover:bg-red-700"
                       }`}
                     >
-                      Block
+                      {user.role === "admin" ? "Protected" : "Block"}
                     </button>
                   </Table.Cell>
                   <Table.Cell>

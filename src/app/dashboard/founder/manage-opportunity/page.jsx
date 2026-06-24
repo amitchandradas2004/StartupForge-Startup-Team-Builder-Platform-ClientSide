@@ -16,12 +16,32 @@ const ManageOpportunityPage = async () => {
 
   return (
     <div className="pb-20 pt-10 dark:bg-slate-950 mx-auto w-full px-5 md:px-10">
-      <div className="flex flex-col md:flex-row items-center justify-between p-5 gap-3 ">
-        {" "}
-        <h2>Manage opportunity from here: {opportunities.length}</h2>
-        <Link href={"/dashboard/founder/add-opportunity"}>
-          <Button> Add new opportunity</Button>
-        </Link>{" "}
+      <div className="mb-6 flex flex-col md:flex-row items-center justify-between gap-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-5 shadow-sm">
+        {/* Left Content */}
+        <div>
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
+            Opportunity Management
+          </p>
+
+          <h2 className="mt-1 text-xl font-bold text-slate-900 dark:text-white">
+            Manage Opportunities
+          </h2>
+
+          <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+            You currently have{" "}
+            <span className="font-semibold text-indigo-600">
+              {opportunities.length}
+            </span>{" "}
+            active opportunities on the platform.
+          </p>
+        </div>
+
+        {/* Right Action */}
+        <Link href="/dashboard/founder/add-opportunity">
+          <Button className="bg-indigo-600 hover:bg-indigo-700 text-white px-5">
+            + Add New Opportunity
+          </Button>
+        </Link>
       </div>
       {opportunities.length > 0 ? (
         <OpportunityTable opportunities={opportunities} />

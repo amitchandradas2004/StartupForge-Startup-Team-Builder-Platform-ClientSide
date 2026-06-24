@@ -102,9 +102,53 @@ export function StartupTable({ startups }) {
                   style={{ animationDelay: `${index * 60}ms` }}
                 >
                   <Table.Cell>{index + 1}</Table.Cell>
-                  <Table.Cell>{startup?.startUpName}</Table.Cell>
-                  <Table.Cell>{startup?.industry}</Table.Cell>
-                  <Table.Cell>{startup?.funding_stage}</Table.Cell>
+                  <Table.Cell>
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">
+                        {startup?.startUpName?.charAt(0)?.toUpperCase()}
+                      </div>
+
+                      <span className="font-semibold text-slate-900 dark:text-white">
+                        {startup?.startUpName}
+                      </span>
+                    </div>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <span
+                      className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
+                        startup?.industry === "saas"
+                          ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-400"
+                          : startup?.industry === "fintech"
+                            ? "bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-400"
+                            : startup?.industry === "healthtech"
+                              ? "bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-400"
+                              : startup?.industry === "edtech"
+                                ? "bg-yellow-100 text-yellow-700 dark:bg-yellow-500/20 dark:text-yellow-400"
+                                : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                      }`}
+                    >
+                      {startup?.industry}
+                    </span>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <span
+                      className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
+                        startup?.funding_stage === "idea-stage"
+                          ? "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                          : startup?.funding_stage === "pre-seed"
+                            ? "bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-400"
+                            : startup?.funding_stage === "seed"
+                              ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-400"
+                              : startup?.funding_stage === "series-a"
+                                ? "bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-400"
+                                : startup?.funding_stage === "series-b"
+                                  ? "bg-purple-100 text-purple-700 dark:bg-purple-500/20 dark:text-purple-400"
+                                  : "bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-400"
+                      }`}
+                    >
+                      {startup?.funding_stage}
+                    </span>
+                  </Table.Cell>
                   <Table.Cell>
                     <div
                       className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${

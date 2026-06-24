@@ -62,8 +62,17 @@ export function StartupTable({ startups }) {
                       initial="hidden"
                       animate="show"
                       exit={{ opacity: 0, x: 20 }}
+                      className="flex items-center gap-3"
                     >
-                      {startup.startUpName}
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 text-white flex items-center justify-center font-bold shadow-md">
+                        {startup?.startUpName?.charAt(0)?.toUpperCase()}
+                      </div>
+
+                      <div>
+                        <p className="font-semibold text-slate-900 dark:text-white">
+                          {startup?.startUpName}
+                        </p>
+                      </div>
                     </motion.div>
                   </Table.Cell>
 
@@ -75,7 +84,21 @@ export function StartupTable({ startups }) {
                       animate="show"
                       exit={{ opacity: 0, x: 20 }}
                     >
-                      {startup.industry}
+                      <span
+                        className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
+                          startup?.industry === "saas"
+                            ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-400"
+                            : startup?.industry === "fintech"
+                              ? "bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-400"
+                              : startup?.industry === "healthtech"
+                                ? "bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-400"
+                                : startup?.industry === "edtech"
+                                  ? "bg-yellow-100 text-yellow-700 dark:bg-yellow-500/20 dark:text-yellow-400"
+                                  : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                        }`}
+                      >
+                        {startup.industry}
+                      </span>
                     </motion.div>
                   </Table.Cell>
 
