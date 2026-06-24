@@ -19,6 +19,7 @@ export async function proxy(request) {
 
 export const config = {
   matcher: [
+    "/pricing/:path",
     "/profile",
     "/browseOpportunities/:path*",
     "/dashboard/founder/:path*",

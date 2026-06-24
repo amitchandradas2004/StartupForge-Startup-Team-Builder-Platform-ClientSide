@@ -4,6 +4,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Inter } from "next/font/google";
 import toast from "react-hot-toast";
+import { authClient } from "@/lib/auth-client";
+import Link from "next/link";
+import { Button } from "@heroui/react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,6 +29,9 @@ const cardVariants = {
 };
 
 const Pricing = () => {
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+
   const handleCheckout = (plan) => {
     if (!plan.priceId) {
       toast.success("Free plan selected");
@@ -107,7 +113,7 @@ const Pricing = () => {
                 priceId: null,
               })
             }
-            className="mt-8 w-full py-3 rounded-xl font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition"
+            className="mt-8 w-full py-3 rounded-xl font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition cursor-pointer"
           >
             Get Started
           </button>
@@ -147,15 +153,23 @@ const Pricing = () => {
             <li>✔ Priority visibility</li>
           </ul>
 
-          <form action={"/api/subscription"} method="POST">
-            {" "}
-            <button
-              type="submit"
-              className="mt-8 w-full py-3 rounded-xl font-medium bg-white text-indigo-600 hover:bg-slate-100 transition"
-            >
-              Get Pro
-            </button>
-          </form>
+          {!user ? (
+            <Link href={"/login"}>
+              <Button className="mt-8 w-full py-3 rounded-xl font-medium bg-white text-indigo-600 hover:bg-slate-100 transition cursor-pointer">
+                Please Login
+              </Button>
+            </Link>
+          ) : (
+            <form action={"/api/subscription"} method="POST">
+              {" "}
+              <button
+                type="submit"
+                className="mt-8 w-full py-4 rounded-xl font-medium bg-white text-indigo-600 hover:bg-slate-100 transition cursor-pointer"
+              >
+                Get Pro
+              </button>
+            </form>
+          )}
         </motion.div>
 
         {/* Enterprise Plan */}
@@ -192,8 +206,8 @@ const Pricing = () => {
             <li>✔ Priority support</li>
           </ul>
 
-          <button className="mt-8 w-full py-3 rounded-xl font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition">
-            Get Premium
+          <button className="mt-8 w-full py-3 rounded-xl font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition cursor-pointer">
+            Not Available
           </button>
         </motion.div>
       </motion.div>

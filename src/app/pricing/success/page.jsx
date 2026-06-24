@@ -1,6 +1,7 @@
 import { stripe } from "@/lib/stripe";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import { payment } from "@/lib/actions/payment";
 
 export default async function Success({ searchParams }) {
   const { session_id } = await searchParams;
@@ -11,6 +12,7 @@ export default async function Success({ searchParams }) {
 
   const {
     status,
+    metadata,
     customer_details: { email: customerEmail },
   } = await stripe.checkout.sessions.retrieve(session_id, {
     expand: ["line_items", "payment_intent"],
@@ -21,6 +23,8 @@ export default async function Success({ searchParams }) {
   }
 
   if (status === "complete") {
+    await payment({ ...metadata, sessionId: session_id , });
+
     return (
       <section className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950 px-6 py-20">
         <div className="w-full max-w-xl">

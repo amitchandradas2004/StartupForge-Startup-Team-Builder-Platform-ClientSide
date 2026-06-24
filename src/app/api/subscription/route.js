@@ -11,7 +11,6 @@ export async function POST() {
       headers: await headers(),
     });
     const user = userSession?.user;
-
     const PRICE_ID = "price_1TltlcEAQuzdQwJPZl1zmgrn";
     const session = await stripe.checkout.sessions.create({
       customer_email: user?.email,
@@ -26,6 +25,9 @@ export async function POST() {
         userId: user?.id,
         userEmail: user?.email,
         userRole: user?.role,
+        userName: user?.name,
+        amount: "12",
+        status: "completed",
       },
       mode: "subscription",
       success_url: `${origin}/pricing/success?session_id={CHECKOUT_SESSION_ID}`,
