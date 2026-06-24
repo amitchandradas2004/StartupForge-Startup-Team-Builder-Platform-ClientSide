@@ -2,14 +2,14 @@
 import { Table } from "@heroui/react";
 import { motion } from "framer-motion";
 
-export function UsersTable({ users }) {
+export function StartupTable({ startups }) {
   return (
-    <div className="w-full h-screen pb-10 px-3">
+    <div className=" w-full h-screen pb-10 px-3">
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className="mb-6 flex flex-col md:flex-row items-center justify-between rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 bg-white dark:bg-slate-900 px-6 py-4 shadow-sm"
+        className="mb-6 flex flex-col md:flex-row items-center justify-between rounded-2xl border border-slate-200 space-y-3 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-4 shadow-sm"
       >
         {/* Left text */}
         <div className="text-center md:text-start">
@@ -19,7 +19,7 @@ export function UsersTable({ users }) {
             transition={{ delay: 0.1, duration: 0.3 }}
             className="text-sm font-medium text-slate-500 dark:text-slate-400"
           >
-            Users Management
+            Startups Management
           </motion.p>
 
           <motion.p
@@ -28,7 +28,7 @@ export function UsersTable({ users }) {
             transition={{ delay: 0.15, duration: 0.3 }}
             className="text-lg font-semibold text-slate-900 dark:text-white"
           >
-            Manage all registered users
+            Overview of all registered startups
           </motion.p>
         </div>
 
@@ -41,20 +41,20 @@ export function UsersTable({ users }) {
         >
           <div className="text-right">
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              Total Users
+              Total Startups
             </p>
 
             <motion.p
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.25, duration: 0.3 }}
-              className="text-2xl font-bold text-slate-900 dark:text-white  text-center md:text-end"
+              className="text-2xl font-bold text-slate-900 dark:text-white text-center md:text-end"
             >
-              {users?.length || 0}
+              {startups?.length || 0}
             </motion.p>
           </div>
 
-          {/* accent bar */}
+          {/* accent indicator */}
           <motion.div
             initial={{ height: 0 }}
             animate={{ height: 40 }}
@@ -66,47 +66,37 @@ export function UsersTable({ users }) {
 
       <Table>
         <Table.ScrollContainer>
-          <Table.Content aria-label="Users Table" className="">
+          <Table.Content aria-label="Users Table">
             <Table.Header>
               <Table.Column isRowHeader>Number</Table.Column>
               <Table.Column>Name</Table.Column>
-              <Table.Column>Role</Table.Column>
-              <Table.Column>Plan</Table.Column>
+              <Table.Column>Industry</Table.Column>
+              <Table.Column>Funding Stage</Table.Column>
               <Table.Column>Status</Table.Column>
-              <Table.Column>Joined</Table.Column>
-              <Table.Column>Block</Table.Column>
-              <Table.Column>Unblock</Table.Column>
+              <Table.Column>Approve</Table.Column>
+              <Table.Column>Remove</Table.Column>
             </Table.Header>
             <Table.Body>
-              {users.map((user, index) => (
+              {startups.map((startup, index) => (
                 <Table.Row
-                  key={user?.email}
+                  key={startup?.email}
                   className="table-row-animate table-row-hover"
                   style={{ animationDelay: `${index * 60}ms` }}
                 >
                   <Table.Cell>{index + 1}</Table.Cell>
-                  <Table.Cell>{user?.name}</Table.Cell>
-                  <Table.Cell>{user?.role}</Table.Cell>
-                  <Table.Cell>{user?.plan}</Table.Cell>
-                  <Table.Cell>{user?.status}</Table.Cell>
-                  <Table.Cell>
-                    {new Date(user?.createdAt).toLocaleString("en-US", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </Table.Cell>
+                  <Table.Cell>{startup?.startUpName}</Table.Cell>
+                  <Table.Cell>{startup?.industry}</Table.Cell>
+                  <Table.Cell>{startup?.funding_stage}</Table.Cell>
+                  <Table.Cell>Pending</Table.Cell>
                   <Table.Cell>
                     <button className="px-3 py-1 text-sm font-medium text-white bg-green-600 rounded-full hover:bg-green-700 btn-scale">
-                      Unblock
+                      Approve
                     </button>
                   </Table.Cell>
 
                   <Table.Cell>
                     <button className="px-3 py-1 text-sm font-medium text-white bg-red-600 rounded-full hover:bg-red-700 btn-scale">
-                      Block
+                      Remove
                     </button>
                   </Table.Cell>
                 </Table.Row>

@@ -84,7 +84,7 @@ export default function DashboardSideBar() {
       {
         icon: MdManageAccounts,
         label: "Manage Startups",
-        href: "/dashboard/admin/manage-startups",
+        href: "/dashboard/admin/startups",
       },
       {
         icon: RiMoneyDollarCircleFill,
