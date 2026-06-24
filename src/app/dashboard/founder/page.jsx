@@ -13,7 +13,7 @@ export default async function OverviewPage() {
   const opportunities = await getFounderOpportunity(founderEmail);
   const applications = await getFounderAllApplications(founderEmail);
   const acceptedMembers = applications.filter(
-    (application) => application.status === "approved",
+    (application) => application.status === "accepted",
   ).length;
   return (
     <div className="pt-10 px-5 container bg-white dark:bg-slate-950 w-full h-screen">
