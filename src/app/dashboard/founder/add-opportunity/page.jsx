@@ -12,7 +12,7 @@ const FounderOpportunityPage = async () => {
   if (!userSession) {
     redirect("/login");
   }
-  if (userSession?.user?.role !== "collaborator") {
+  if (userSession?.user?.role !== "founder") {
     redirect("/unauthorized");
   }
 

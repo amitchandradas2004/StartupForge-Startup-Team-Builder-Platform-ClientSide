@@ -1,7 +1,6 @@
 "use client";
 import { Date } from "@/components/dashboard/founder/Date";
-import { createOpportynity } from "@/lib/actions/startup";
-import { motion } from "framer-motion";
+ import { motion } from "framer-motion";
 import {
   Button,
   Fieldset,
@@ -19,16 +18,13 @@ import { FaUser } from "react-icons/fa6";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
+import { createOpportynity } from "@/lib/actions/opportunity";
  
 const FounderAddOppturnityPage = () => {
   const [skillsInput, setSkillsInput] = useState("");
   const { data: session } = authClient.useSession();
   const user = session?.user;
   const founderEmail = user?.email;
-
-    
-
-
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);

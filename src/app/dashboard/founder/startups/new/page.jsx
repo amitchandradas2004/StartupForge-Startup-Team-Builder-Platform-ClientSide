@@ -37,9 +37,7 @@ const FounderstartupsPage = () => {
       founderEmail: userEmail,
       status: "pending",
     };
-
     const res = await createStartup(startupData);
-
     if (res.insertedId) {
       toast.success("StartUp created successfully");
       redirect("/dashboard/founder/startups");
@@ -342,9 +340,10 @@ const FounderstartupsPage = () => {
                 </motion.div>
                 {/* Team Size Needed */}
                 <motion.div variants={itemVariants}>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+
+                  <Label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                     Team Size Needed
-                  </label>
+                  </Label>
 
                   <Select
                     name="team_size_needed"

@@ -22,8 +22,7 @@ export function DeleteOpportunity({ opportunity }) {
       }
     } catch (error) {
       toast.error("Something went wrong");
-      console.error(error);
-    }
+     }
   };
   return (
     <AlertDialog>

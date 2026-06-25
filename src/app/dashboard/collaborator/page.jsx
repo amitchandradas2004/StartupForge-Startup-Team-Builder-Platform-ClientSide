@@ -21,14 +21,14 @@ const CollaboratorPage = async () => {
     return <div>Please login</div>;
   }
 
-  const applications = await getApplicationsByApplicantEmail(user.email);
+  const applications = await getApplicationsByApplicantEmail(user?.email);
 
   const stats = {
     totalApplications: applications.length,
     pendingApplications: applications.filter((app) => app.status === "pending")
       .length,
     approvedApplications: applications.filter(
-      (app) => app.status === "approved",
+      (app) => app.status === "accepted",
     ).length,
     rejectedApplications: applications.filter(
       (app) => app.status === "rejected",

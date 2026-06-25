@@ -34,7 +34,7 @@ const CollaboratorProfilePage = () => {
       const data = await res.json();
       setUser(data);
     } catch (err) {
-      console.log("Error fetching user:", err);
+      // console.log("Error fetching user:", err);
     } finally {
       setLoading(false);
     }

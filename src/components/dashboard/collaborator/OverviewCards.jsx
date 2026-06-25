@@ -35,7 +35,7 @@ const OverviewCard = ({ title, value, icon: Icon, color }) => {
 
 const CollaboratorDashboard = ({ stats }) => {
   return (
-    <section className="min-h-screen px-4 py-10 dark:bg-slate-950 w-full">
+    <section className="min-h-screen px-4 py-10 dark:bg-slate-950 w-full ">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -53,7 +53,7 @@ const CollaboratorDashboard = ({ stats }) => {
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 table-row-animate table-row-hover">
           <OverviewCard
             title="Total Applications"
             value={stats.totalApplications}
@@ -84,7 +84,7 @@ const CollaboratorDashboard = ({ stats }) => {
         </div>
 
         {/* CTA Section */}
-        <div className="mt-8 rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 p-10 text-center">
+        <div className="mt-8 rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 p-10 text-center table-row-animate table-row-hover">
           <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
             Application Management
           </h2>

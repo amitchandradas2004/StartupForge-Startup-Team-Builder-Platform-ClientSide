@@ -1,6 +1,6 @@
 "use client";
-import { updateStartupStatus } from "@/lib/actions/startup";
-import { Table } from "@heroui/react";
+import { updateStartupStatus } from "@/lib/actions/status";
+ import { Table } from "@heroui/react";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 

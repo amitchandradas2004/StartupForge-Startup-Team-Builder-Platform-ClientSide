@@ -43,8 +43,7 @@ export function CollaboratorProfileUpdateModal() {
       image,
       email,
     };
-    // console.log(allData, "all");
-
+ 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user`, {
       method: "PATCH",
       headers: {

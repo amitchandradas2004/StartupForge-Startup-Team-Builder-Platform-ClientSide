@@ -39,10 +39,7 @@ const Pricing = () => {
     }
 
     toast.success(`${plan.name} plan selected`);
-    console.log({
-      priceId: plan.priceId,
-      billing: "monthly",
-    });
+     
   };
 
   return (

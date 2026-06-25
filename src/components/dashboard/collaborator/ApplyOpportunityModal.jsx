@@ -1,7 +1,7 @@
 "use client";
 
-import { submitApplication } from "@/lib/actions/startup";
-import { authClient } from "@/lib/auth-client";
+import { submitApplication } from "@/lib/actions/application";
+ import { authClient } from "@/lib/auth-client";
 import {
   Button,
   Input,
@@ -19,8 +19,7 @@ import { VscGitStashApply } from "react-icons/vsc";
 export function ApplyOpportunityModal({ opportunity }) {
   const { role_title, _id } = opportunity;
 
-  console.log(opportunity, "opportunity");
-  const { data: session } = authClient.useSession();
+   const { data: session } = authClient.useSession();
   const user = session?.user;
   const applicantEmail = user?.email;
   const opportunityName = role_title;
