@@ -10,15 +10,13 @@ const ApplicationPage = async () => {
 
   const user = session?.user;
   const founderEmail = user?.email;
-  // console.log(founderEmail, "email");
 
   const applications = await getFounderAllApplications(founderEmail);
-  console.log(applications.length, "length");
 
   return (
-    <div className="dark:bg-slate-950 py-10 px-5 w-full">
+    <div className="bg-white py-10 dark:bg-slate-950 px-5 w-full">
       {applications.length === 0 ? (
-        <section className="dark:bg-slate-950 w-full">
+        <section className="w-full">
           <div className="min-h-screen flex items-center justify-center mr-10">
             <div className="w-full max-w-md rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-lg p-8 text-center relative overflow-hidden">
               {/* subtle background glow */}
