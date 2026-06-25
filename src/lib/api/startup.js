@@ -1,3 +1,5 @@
+import { authClient } from "../auth-client";
+
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 export const getFounderStartup = async (founderEmail) => {
   const params = new URLSearchParams({

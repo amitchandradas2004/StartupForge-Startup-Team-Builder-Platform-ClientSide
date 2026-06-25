@@ -11,7 +11,8 @@ const FeaturedOpportunities = async () => {
   });
 
   const opportunities = await res.json();
-  const featuredOpportunities = opportunities.slice(0, 6);
+  const featuredOpportunities = opportunities.data.slice(0, 6);
+  // const featuredOpportunitiesData = featuredOpportunities.data;
 
   return (
     <section className="dark:bg-slate-950">
