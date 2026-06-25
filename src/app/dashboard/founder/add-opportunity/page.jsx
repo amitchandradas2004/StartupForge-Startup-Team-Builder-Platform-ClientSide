@@ -3,11 +3,18 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import FounderAddOppturnityPage from "./FounderAddOppturnityPage";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 const FounderOpportunityPage = async () => {
   const userSession = await auth.api.getSession({
     headers: await headers(),
   });
+  if (!userSession) {
+    redirect("/login");
+  }
+  if (userSession?.user?.role !== "collaborator") {
+    redirect("/unauthorized");
+  }
 
   const founderEmail = userSession?.user?.email;
   const founderPlan = userSession?.user?.plan;

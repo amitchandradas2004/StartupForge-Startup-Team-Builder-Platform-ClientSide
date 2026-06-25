@@ -4,10 +4,16 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { CollaboratorProfileUpdateModal } from "./CollaboratorProfileUpdateModal";
+import { redirect } from "next/navigation";
 
 const CollaboratorProfilePage = () => {
   const { data: session } = authClient.useSession();
-
+  if (!session) {
+    redirect("/login");
+  }
+  if (session?.user?.role !== "collaborator") {
+    redirect("/unauthorized");
+  }
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 

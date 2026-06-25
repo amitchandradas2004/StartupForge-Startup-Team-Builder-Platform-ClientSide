@@ -1,8 +1,20 @@
 import { getAllUsers } from "@/lib/api/user";
 import { UsersTable } from "./UsersTable";
 import AdminNoUsers from "./AdminNoUsers";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 const AdminManageUsersPage = async () => {
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+    if (!session) {
+      redirect("/login");
+    }
+    if (session?.user?.role !== "admin") {
+      redirect("/unauthorized");
+    }
   const users = await getAllUsers();
 
   return (

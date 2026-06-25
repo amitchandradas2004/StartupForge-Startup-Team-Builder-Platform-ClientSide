@@ -3,8 +3,20 @@ import AdminOverviewCards from "../../../components/dashboard/admin/AdminOvervie
 import { getAllStarups } from "@/lib/api/startup";
 import { getAllOpportunities } from "@/lib/api/opportunity";
 import { getAllTransactions } from "@/lib/api/transaction";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 const AdminPage = async () => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  if (!session) {
+    redirect("/login");
+  }
+  if (session?.user?.role !== "admin") {
+    redirect("/unauthorized");
+  }
   const users = await getAllUsers();
   const startups = await getAllStarups();
   const opportunities = await getAllOpportunities();

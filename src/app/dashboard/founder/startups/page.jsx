@@ -4,11 +4,18 @@ import { auth } from "@/lib/auth";
 import { Button } from "@heroui/react";
 import { headers } from "next/headers";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 const StartupsPage = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
+   if (!session) {
+      redirect("/login");
+    }
+    if (session?.user?.role !== "founder") {
+      redirect("/unauthorized");
+    }
   const user = session?.user;
   const founderEmail = user?.email;
   const startups = await getFounderStartup(founderEmail);

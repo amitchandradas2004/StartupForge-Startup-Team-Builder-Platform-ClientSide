@@ -3,11 +3,18 @@ import { ApplicationTable } from "./ApplicationTable";
 import EmptyApplications from "./EmptyApplication";
 import { headers } from "next/headers";
 import { getApplicationsByApplicantEmail } from "@/lib/api/application";
+import { redirect } from "next/navigation";
 
 const CollaboratorApplicationsPage = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
+  if (!session) {
+    redirect("/login");
+  }
+  if (session?.user?.role !== "collaborator") {
+    redirect("/unauthorized");
+  }
   const user = session?.user;
   const applicantEmail = user?.email;
   const applications = await getApplicationsByApplicantEmail(applicantEmail);

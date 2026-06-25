@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function ProfilePage() {
   const { data: session } = authClient.useSession();
   const user = session?.user;
-
+  
   const [isEditing, setIsEditing] = useState(false);
 
   const [form, setForm] = useState({

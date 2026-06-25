@@ -2,12 +2,18 @@ import { getFounderAllApplications } from "@/lib/api/application";
 import { ApplicationTable } from "./ApplicationTable";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 const ApplicationPage = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
-
+ if (!session) {
+    redirect("/login");
+  }
+  if (session?.user?.role !== "founder") {
+    redirect("/unauthorized");
+  }
   const user = session?.user;
   const founderEmail = user?.email;
 
