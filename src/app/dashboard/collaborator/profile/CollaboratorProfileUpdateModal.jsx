@@ -1,6 +1,7 @@
 "use client";
 
 import { imageUpload } from "@/lib/actions/imageUpload";
+import { profileUpdate, profileUpdateCol } from "@/lib/actions/profile";
 import { authClient } from "@/lib/auth-client";
 import {
   Button,
@@ -43,18 +44,8 @@ export function CollaboratorProfileUpdateModal() {
       image,
       email,
     };
- 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(allData),
-    });
+    const result = await profileUpdateCol(allData);
 
-    const result = await res.json();
-
- 
     if (result.modifiedCount > 0) {
       toast.success("Profile updated successfully");
       window.location.reload();
@@ -67,7 +58,7 @@ export function CollaboratorProfileUpdateModal() {
       </Button>
       <Modal.Backdrop>
         <Modal.Container placement="auto">
-          <Modal.Dialog className="">
+          <Modal.Dialog>
             <Modal.CloseTrigger />
             <Modal.Header>
               <Modal.Icon className="bg-accent-soft text-accent-soft-foreground">

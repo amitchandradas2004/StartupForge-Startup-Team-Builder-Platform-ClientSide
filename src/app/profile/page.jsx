@@ -9,24 +9,6 @@ import Link from "next/link";
 export default function ProfilePage() {
   const { data: session } = authClient.useSession();
   const user = session?.user;
-  
-  const [isEditing, setIsEditing] = useState(false);
-
-  const [form, setForm] = useState({
-    name: user?.name,
-    image: user?.image,
-  });
-
-  const handleSave = () => {
-    setUser((prev) => ({
-      ...prev,
-      name: form.name,
-      image: form.image,
-      updatedAt: new Date().toISOString(),
-    }));
-
-    setIsEditing(false);
-  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950 p-6">
@@ -43,7 +25,7 @@ export default function ProfilePage() {
 
           <div>
             <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-              {user?.name}
+              {user?.name || "Name"}
             </h2>
             <p className="text-sm text-slate-500">{user?.email}</p>
           </div>

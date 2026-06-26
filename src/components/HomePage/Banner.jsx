@@ -90,7 +90,7 @@ const Banner = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight"
+          className={`text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight ${inter.className}`}
         >
           {text}
           <span className="animate-pulse">|</span>
@@ -101,7 +101,7 @@ const Banner = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9 }}
-          className={`mt-5 text-sm md:text-base lg:text-lg text-white/80 leading-relaxed ${inter.className}`}
+          className={`mt-5 text-sm md:text-base lg:text-lg text-white/80 leading-relaxed ${spaceGrotesk.className}`}
         >
           StartupForge bridges the gap between ambitious founders and talented
           collaborators. Create startups, post opportunities, recruit team

@@ -18,14 +18,19 @@ const UserDropDown = ({ user, role }) => {
 
   return (
     <Dropdown>
-      <Button isIconOnly aria-label="Profile" variant="secondary">
+      <Button
+        isIconOnly
+        aria-label="Profile"
+        variant="secondary"
+        className={" overflow-hidden border-2 border-indigo-500 shadow-2xl shadow-indigo-600"}
+      >
         {user ? (
           <Image
             src={user?.image}
             alt={user?.name}
-            height={60}
-            width={60}
-            className="rounded-full shadow border"
+            height={50}
+            width={50}
+            className="rounded-full overflow-hidden shadow border w-full object-cover"
             referrerPolicy="no-referrer"
           />
         ) : (

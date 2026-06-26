@@ -27,7 +27,7 @@ const page = async ({ searchParams }) => {
           ))}
         </div>
 
-        <Table.Footer className="my-5">
+        <Table.Footer className="my-5  overflow-x-auto">
           <Pagination size="sm">
             <Pagination.Content>
               <Pagination.Item>
