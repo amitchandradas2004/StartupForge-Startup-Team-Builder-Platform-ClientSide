@@ -6,7 +6,7 @@ import { Inter } from "next/font/google";
 import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
-import { Button } from "@heroui/react";
+import { Button, Tooltip } from "@heroui/react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -39,7 +39,6 @@ const Pricing = () => {
     }
 
     toast.success(`${plan.name} plan selected`);
-     
   };
 
   return (
@@ -203,9 +202,26 @@ const Pricing = () => {
             <li>✔ Priority support</li>
           </ul>
 
-          <button className="mt-8 w-full py-3 rounded-xl font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition cursor-pointer">
-            Not Available
-          </button>
+          <div className="flex items-center gap-4">
+            <Tooltip delay={0}>
+              <Button
+                variant="secondary"
+                className="mt-8 w-full py-5 rounded-xl font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition cursor-pointer"
+              >
+                Not Available
+              </Button>
+              <Tooltip.Content>
+                <p className="p-2 mb-2 text-xs">
+                  Purchasing this plan is currently unavailable.
+                </p>
+              </Tooltip.Content>
+            </Tooltip>
+            <Tooltip delay={0}>
+              <Tooltip.Content>
+                <p>More information</p>
+              </Tooltip.Content>
+            </Tooltip>
+          </div>
         </motion.div>
       </motion.div>
     </section>

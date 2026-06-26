@@ -1,7 +1,7 @@
 import { getAllUsers } from "@/lib/api/user";
 import AdminOverviewCards from "../../../components/dashboard/admin/AdminOverviewCards";
 import { getAllStarups } from "@/lib/api/startup";
-import { getAllOpportunities } from "@/lib/api/opportunity";
+import { getAllOpportunities, getOpportunities } from "@/lib/api/opportunity";
 import { getAllTransactions } from "@/lib/api/transaction";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
@@ -19,7 +19,8 @@ const AdminPage = async () => {
   }
   const users = await getAllUsers();
   const startups = await getAllStarups();
-  const opportunities = await getAllOpportunities();
+  const opportunities = await getOpportunities();
+
   const transactions = await getAllTransactions();
   const totalRevenue = transactions.reduce(
     (sum, transaction) => sum + Number(transaction.amount || 0),

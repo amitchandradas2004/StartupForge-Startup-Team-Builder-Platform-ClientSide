@@ -19,7 +19,6 @@ const FeaturedStartup = async () => {
       {" "}
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
-
         <div className="flex flex-col md:flex-row items-center md:justify-between gap-4 mb-10">
           <div className="text-center md:text-start">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">

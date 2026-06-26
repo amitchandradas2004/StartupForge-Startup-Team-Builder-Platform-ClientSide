@@ -21,3 +21,9 @@ export const getAllOpportunities = async (page) => {
   });
   return res.json();
 };
+export const getOpportunities = async () => {
+  const res = await fetch(`${baseUrl}/api/all/opportunities`, {
+    cache: "no-store",
+  });
+  return res.json();
+};

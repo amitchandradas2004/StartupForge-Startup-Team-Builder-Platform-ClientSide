@@ -36,14 +36,14 @@ export default function ProfilePage() {
           <p>
             <span className="font-medium">Role:</span>{" "}
             <span className="border rounded-2xl  text-black p-1 bg-slate-200 dark:bg-slate-800 dark:text-white ">
-              {user?.role}
+              {user?.role || "founder"}
             </span>
           </p>
           <div className="flex flex-col md:flex-row items-start gap-3 justify-start ">
             <p>
               <span className="font-medium">Current Plan:</span>{" "}
               <span className="border rounded-2xl  text-black p-1 bg-slate-200 dark:bg-slate-800 dark:text-white">
-                {user?.plan}
+                {user?.plan || "free"}
               </span>
             </p>
             <span>
