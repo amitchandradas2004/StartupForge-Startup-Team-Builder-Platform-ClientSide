@@ -2,7 +2,7 @@
 
 import { Calendar, DateField, DatePicker, Label } from "@heroui/react";
 
-export function Date() {
+export function Date(d) {
   return (
     <DatePicker className="w-full" name="deadline" isRequired>
       <Label>Deadline</Label>

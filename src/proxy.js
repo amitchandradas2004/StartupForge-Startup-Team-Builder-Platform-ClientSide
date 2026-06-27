@@ -21,9 +21,9 @@ export const config = {
   matcher: [
     "/pricing/:path",
     "/profile",
-    "/browseOpportunities/:path*",
-    "/dashboard/founder/:path*",
-    "/dashboard/collaborator/:path*",
-    "/dashboard/admin/:path*",
+    "/dashboard/founder/:path",
+    "/dashboard/collaborator/:path",
+    "/dashboard/admin/:path",
+    "/browseOpportunities/:path",
   ],
 };
