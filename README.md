@@ -5,10 +5,8 @@ StartUp Forge is a modern startup collaboration platform that connects founders 
 ## 🌐 Live Demo
 
 Add your deployed client URL here:
-
-```bash
-https://your-client-url.vercel.app
-```
+https://startupforge-client-swart.vercel.app
+ 
 
 ## ✨ Features
 
