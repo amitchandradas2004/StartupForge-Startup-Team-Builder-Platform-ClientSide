@@ -6,8 +6,7 @@ import {
   FaBriefcase,
   FaCalendarAlt,
   FaLaptopHouse,
-  FaArrowRight,
-  FaCode,
+   FaCode,
 } from "react-icons/fa";
 import { ApplyOpportunityModal } from "../collaborator/ApplyOpportunityModal";
 

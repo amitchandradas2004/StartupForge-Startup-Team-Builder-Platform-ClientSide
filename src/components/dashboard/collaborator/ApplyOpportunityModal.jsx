@@ -1,7 +1,7 @@
 "use client";
 
 import { submitApplication } from "@/lib/actions/application";
- import { authClient } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   Input,
@@ -19,7 +19,7 @@ import { VscGitStashApply } from "react-icons/vsc";
 export function ApplyOpportunityModal({ opportunity }) {
   const { role_title, _id } = opportunity;
 
-   const { data: session } = authClient.useSession();
+  const { data: session } = authClient.useSession();
   const user = session?.user;
   const applicantEmail = user?.email;
   const opportunityName = role_title;
@@ -99,9 +99,7 @@ export function ApplyOpportunityModal({ opportunity }) {
                     <Button slot="close" variant="secondary">
                       Cancel
                     </Button>
-                    <Button type="submit" slot="close">
-                      Apply
-                    </Button>
+                    <Button type="submit">Apply</Button>
                   </Modal.Footer>
                 </form>
               </Surface>
