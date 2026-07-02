@@ -22,7 +22,9 @@ const UserDropDown = ({ user, role }) => {
         isIconOnly
         aria-label="Profile"
         variant="secondary"
-        className={" overflow-hidden border-2 border-indigo-500 shadow-2xl shadow-indigo-600"}
+        className={
+          " overflow-hidden border-2 border-indigo-500 shadow-2xl shadow-indigo-600"
+        }
       >
         {user ? (
           <Image
